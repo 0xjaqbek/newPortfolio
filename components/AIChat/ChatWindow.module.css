@@ -1,0 +1,131 @@
+.chatWindow {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-primary);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-primary);
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.prompt {
+  color: var(--color-secondary);
+  margin-right: var(--spacing-xs);
+}
+
+.clearButton {
+  padding: 2px var(--spacing-xs);
+  font-size: 0.75rem;
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.clearButton:hover {
+  background: var(--color-secondary);
+  color: var(--color-background);
+}
+
+.messagesContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+}
+
+.welcomeText {
+  padding-left: var(--spacing-md);
+  line-height: 1.6;
+}
+
+.typingIndicator {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.dots span {
+  animation: blink 1.4s infinite;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 20%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+.inputForm {
+  display: flex;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  border-top: 1px solid var(--color-primary);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.input {
+  flex: 1;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.9rem;
+}
+
+.sendButton {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .messagesContainer {
+    padding: var(--spacing-sm);
+  }
+
+  .inputForm {
+    flex-direction: column;
+  }
+
+  .sendButton {
+    width: 100%;
+  }
+}

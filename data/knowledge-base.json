@@ -1,0 +1,20 @@
+{
+  "personalityTraits": [
+    "Add personality traits here during knowledge gathering phase"
+  ],
+  "workingStyle": [
+    "Preferences about how you work, communication style, etc."
+  ],
+  "interests": [
+    "Technical interests beyond work"
+  ],
+  "careerGoals": [
+    "Where you want to go professionally"
+  ],
+  "philosophies": [
+    "Your thoughts on development, technology, etc."
+  ],
+  "funFacts": [
+    "Interesting things about you that aren't in the formal bio"
+  ]
+}

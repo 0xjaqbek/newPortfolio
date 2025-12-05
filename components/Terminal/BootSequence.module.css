@@ -1,0 +1,70 @@
+.bootSequence {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-background);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.content {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  padding: var(--spacing-lg);
+  max-width: 800px;
+  width: 100%;
+}
+
+.line {
+  margin-bottom: 0.3rem;
+  animation: lineAppear 0.1s ease-in;
+}
+
+.prompt {
+  color: var(--color-secondary);
+  margin-right: 0.5rem;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 16px;
+  background: var(--color-primary);
+  animation: blink 0.8s infinite;
+  margin-left: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lineAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}

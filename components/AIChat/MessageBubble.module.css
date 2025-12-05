@@ -1,0 +1,72 @@
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  font-size: 0.9rem;
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.role {
+  color: var(--color-secondary);
+}
+
+.timestamp {
+  color: var(--color-secondary);
+}
+
+.content {
+  display: flex;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-primary);
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.prompt {
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.text {
+  flex: 1;
+  white-space: pre-wrap;
+}
+
+.user .content {
+  background: rgba(0, 255, 0, 0.05);
+  border-color: var(--color-secondary);
+}
+
+.user .role {
+  color: var(--color-primary);
+}
+
+.assistant .content {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect */
+.message:hover .content {
+  box-shadow: 0 0 8px var(--color-glow);
+}

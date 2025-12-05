@@ -1,0 +1,311 @@
+.section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: var(--spacing-xs);
+}
+
+.prompt {
+  color: var(--color-secondary);
+  margin-right: var(--spacing-xs);
+}
+
+.content {
+  padding-left: var(--spacing-md);
+  line-height: 1.8;
+}
+
+.loading {
+  color: var(--color-secondary);
+  animation: blink 1s infinite;
+}
+
+.noData {
+  color: var(--color-secondary);
+  font-style: italic;
+}
+
+/* About styles */
+.header {
+  margin-bottom: var(--spacing-md);
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: normal;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-primary);
+  text-shadow: 0 0 10px var(--color-glow);
+}
+
+.title {
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.location {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.label {
+  color: var(--color-secondary);
+}
+
+.bio {
+  margin-top: var(--spacing-md);
+  font-size: 1rem;
+}
+
+/* Skills styles */
+.skillCategory {
+  margin-bottom: var(--spacing-lg);
+}
+
+.skillTitle {
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-secondary);
+}
+
+.bracket {
+  color: var(--color-primary);
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.skillTag {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--color-primary);
+  background: rgba(0, 255, 0, 0.05);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.skillTag:hover {
+  background: rgba(0, 255, 0, 0.15);
+  box-shadow: 0 0 8px var(--color-glow);
+}
+
+/* Experience styles */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.timelineItem {
+  border-left: 2px solid var(--color-primary);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.timelineItem::before {
+  content: '>';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  color: var(--color-primary);
+  background: var(--color-background);
+}
+
+.timelineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.jobTitle {
+  font-size: 1.15rem;
+  font-weight: normal;
+  color: var(--color-primary);
+}
+
+.period {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+}
+
+.company {
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-secondary);
+}
+
+.description {
+  margin-bottom: var(--spacing-sm);
+}
+
+.achievements {
+  list-style: none;
+  margin: var(--spacing-sm) 0;
+}
+
+.achievements li {
+  padding-left: var(--spacing-md);
+  position: relative;
+  margin-bottom: var(--spacing-xs);
+}
+
+.achievements li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.techTag {
+  padding: 2px var(--spacing-xs);
+  border: 1px solid var(--color-secondary);
+  font-size: 0.75rem;
+  color: var(--color-secondary);
+}
+
+/* Projects styles */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.projectCard {
+  border: 1px solid var(--color-primary);
+  padding: var(--spacing-md);
+  background: rgba(0, 255, 0, 0.02);
+  transition: all 0.3s;
+}
+
+.projectCard:hover {
+  background: rgba(0, 255, 0, 0.05);
+  box-shadow: 0 0 15px var(--color-glow);
+  transform: translateY(-2px);
+}
+
+.projectName {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.projectDescription {
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.9rem;
+}
+
+.highlights {
+  list-style: none;
+  margin: var(--spacing-sm) 0;
+  font-size: 0.85rem;
+}
+
+.highlights li {
+  padding-left: var(--spacing-sm);
+  position: relative;
+  margin-bottom: var(--spacing-xs);
+}
+
+.highlights li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+}
+
+.projectLinks {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.projectLink {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  transition: all 0.2s;
+}
+
+.projectLink:hover {
+  color: var(--color-primary);
+}
+
+/* Contact styles */
+.contactGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.contactItem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+}
+
+.contactLabel {
+  color: var(--color-secondary);
+  min-width: 100px;
+}
+
+.contactLink {
+  color: var(--color-primary);
+  transition: all 0.2s;
+}
+
+.contactLink:hover {
+  text-shadow: 0 0 8px var(--color-glow);
+}
+
+.contactNote {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-secondary);
+  background: rgba(0, 255, 0, 0.02);
+  font-style: italic;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .content {
+    padding-left: var(--spacing-sm);
+  }
+
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

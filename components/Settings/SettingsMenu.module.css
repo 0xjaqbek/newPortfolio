@@ -1,0 +1,186 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  padding: var(--spacing-md);
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  background: var(--color-background);
+  border: 2px solid var(--color-primary);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 30px var(--color-glow);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.prompt {
+  color: var(--color-secondary);
+  margin-right: var(--spacing-xs);
+}
+
+.closeButton {
+  padding: var(--spacing-xs);
+  min-width: auto;
+}
+
+.section {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-secondary);
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.option {
+  padding: var(--spacing-sm);
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option:hover {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.option.active {
+  background: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.toggleList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  transition: all 0.2s;
+}
+
+.toggle:hover {
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.toggle input[type='checkbox'] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-primary);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.toggle input[type='checkbox']:checked {
+  background: var(--color-primary);
+}
+
+.toggle input[type='checkbox']:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-background);
+  font-size: 0.9rem;
+}
+
+.toggle span {
+  user-select: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+.resetButton {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.resetButton:hover {
+  background: var(--color-secondary);
+  color: var(--color-background);
+}
+
+.closeButtonBottom {
+  flex: 1;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .modal {
+    max-height: 95vh;
+  }
+
+  .optionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}

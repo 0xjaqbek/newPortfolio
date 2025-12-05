@@ -1,0 +1,233 @@
+:root {
+  /* Color variables - dynamically set by ThemeContext */
+  --color-primary: #00ff00;
+  --color-secondary: #00cc00;
+  --color-background: #0a0a0a;
+  --color-text: #00ff00;
+  --color-glow: rgba(0, 255, 0, 0.5);
+
+  /* Effect variables */
+  --scanlines-opacity: 0.1;
+  --curvature-amount: 3px;
+  --glow-amount: 10px;
+  --chromatic-aberration: 0px;
+
+  /* Font */
+  --font-mono: 'Courier New', 'Consolas', monospace;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+}
+
+body {
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--color-secondary);
+  text-shadow: 0 0 5px var(--color-glow);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+/* Terminal cursor animation */
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background: var(--color-primary);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+/* Text glow effect */
+.text-glow {
+  text-shadow: 0 0 var(--glow-amount) var(--color-glow);
+}
+
+/* Typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--color-primary);
+  animation: typing 2s steps(40, end), blink 0.75s step-end infinite;
+}
+
+/* Screen flicker effect */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.flicker {
+  animation: flicker 0.15s infinite;
+}
+
+/* Button styles */
+button {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Input styles */
+input,
+textarea {
+  background: var(--color-background);
+  border: 1px solid var(--color-primary);
+  color: var(--color-text);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 10px var(--color-glow);
+  border-color: var(--color-secondary);
+}
+
+/* Code blocks */
+pre,
+code {
+  font-family: var(--font-mono);
+  background: rgba(0, 0, 0, 0.5);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-primary);
+}
+
+pre {
+  overflow-x: auto;
+  padding: var(--spacing-sm);
+}
+
+/* Utility classes */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-sm {
+  margin-top: var(--spacing-sm);
+}
+.mt-md {
+  margin-top: var(--spacing-md);
+}
+.mt-lg {
+  margin-top: var(--spacing-lg);
+}
+
+.mb-sm {
+  margin-bottom: var(--spacing-sm);
+}
+.mb-md {
+  margin-bottom: var(--spacing-md);
+}
+.mb-lg {
+  margin-bottom: var(--spacing-lg);
+}

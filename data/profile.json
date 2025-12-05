@@ -1,0 +1,62 @@
+{
+  "name": "Jakub Skwierawski",
+  "title": "Full Stack Developer | Blockchain/AI Enthusiast",
+  "bio": "Passionate developer focused on building innovative solutions. Add your bio here - this will be used by the AI chatbot to introduce you.",
+  "location": "Kaszuby Pomorskie voivodeship",
+
+  "contact": {
+    "email": "jaqbek.eth@gmail.com",
+    "twitter": "@jaqbek_eth",
+    "telegram": "@jaqbek"
+  },
+
+  "skills": {
+    "languages": ["JavaScript", "TypeScript", "Python", "Solidity"],
+    "frameworks": ["React", "Next.js", "Node.js", "Express"],
+    "tools": ["Git", "Docker", "PostgreSQL", "MongoDB"],
+    "other": ["Web3", "Smart Contracts", "REST APIs", "GraphQL"]
+  },
+
+  "experience": [
+    {
+      "id": "exp-1",
+      "title": "Senior Developer",
+      "company": "Company Name",
+      "location": "Remote",
+      "period": {
+        "start": "2022-01",
+        "end": "Present"
+      },
+      "description": "Leading development of...",
+      "achievements": [
+        "Achievement 1",
+        "Achievement 2"
+      ],
+      "technologies": ["React", "Node.js", "TypeScript"]
+    }
+  ],
+
+  "projects": [
+    {
+      "id": "proj-1",
+      "name": "Project Name",
+      "description": "Brief description of the project",
+      "repoUrl": "https://github.com/0xjaqbek/repo-name",
+      "technologies": ["React", "TypeScript", "Next.js"],
+      "highlights": [
+        "Key feature 1",
+        "Key feature 2"
+      ],
+      "demo": "https://demo-url.com",
+      "featured": true
+    },
+    {
+      "id": "proj-2",
+      "name": "Private Project",
+      "description": "Description of private project",
+      "readmePath": "data/private-readmes/project-name.md",
+      "technologies": ["Node.js", "Express", "MongoDB"],
+      "featured": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+/* Screen Glow Effect */
+.screen-glow {
+  position: relative;
+  box-shadow:
+    0 0 calc(var(--glow-amount) * 2) var(--color-glow),
+    inset 0 0 calc(var(--glow-amount) * 0.5) var(--color-glow);
+}
+
+/* Text glow for important elements */
+.glow-text {
+  text-shadow:
+    0 0 5px var(--color-glow),
+    0 0 10px var(--color-glow),
+    0 0 15px var(--color-glow);
+}
+
+/* Pulsing glow animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 5px var(--color-glow));
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 15px var(--color-glow));
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Glow on hover */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  text-shadow:
+    0 0 10px var(--color-glow),
+    0 0 20px var(--color-glow);
+  filter: brightness(1.2);
+}
+
+/* Screen reflection effect */
+.screen-reflection {
+  position: relative;
+}
+
+.screen-reflection::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.02) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 99;
+}
