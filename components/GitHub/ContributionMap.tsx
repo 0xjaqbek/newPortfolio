@@ -8,8 +8,16 @@ export default function ContributionMap() {
   const [data, setData] = useState<ContributionData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     fetch('/api/github/contributions')
       .then((res) => res.json())
       .then((responseData) => {
@@ -25,6 +33,8 @@ export default function ContributionMap() {
         setError('Failed to load contribution data');
         setLoading(false);
       });
+
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   if (loading) {
@@ -59,11 +69,14 @@ export default function ContributionMap() {
   const dayLabels = ['Mon', 'Wed', 'Fri'];
   const dayIndices = [0, 2, 4]; // Monday, Wednesday, Friday
 
+  // Show fewer weeks on mobile (last 16 weeks / ~4 months)
+  const displayWeeks = isMobile ? data.weeks.slice(-16) : data.weeks;
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <span className={styles.totalContributions}>
-          {data.totalContributions.toLocaleString()} contributions in the last year
+          {data.totalContributions.toLocaleString()} contributions {isMobile ? 'in last 4 months' : 'in the last year'}
         </span>
       </div>
 
@@ -71,7 +84,7 @@ export default function ContributionMap() {
         {/* Month labels */}
         <div className={styles.months}>
           <div className={styles.monthsOffset}></div>
-          {data.weeks.map((_, index) => (
+          {displayWeeks.map((_, index) => (
             <div key={index} className={styles.monthLabel}>
               {getMonthLabel(index)}
             </div>
@@ -91,7 +104,7 @@ export default function ContributionMap() {
 
           {/* Contribution squares */}
           <div className={styles.weeks}>
-            {data.weeks.map((week, weekIndex) => (
+            {displayWeeks.map((week, weekIndex) => (
               <div key={weekIndex} className={styles.week}>
                 {week.days.map((day, dayIndex) => (
                   <div
