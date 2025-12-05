@@ -215,6 +215,20 @@
   font-size: 0.9rem;
 }
 
+.projectStats {
+  display: flex;
+  gap: var(--spacing-md);
+  margin: var(--spacing-sm) 0;
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .highlights {
   list-style: none;
   margin: var(--spacing-sm) 0;
