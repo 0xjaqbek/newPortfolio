@@ -64,6 +64,17 @@
   font-size: 1rem;
 }
 
+.contributionSection {
+  margin-top: var(--spacing-xl);
+}
+
+.subsectionTitle {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-secondary);
+}
+
 /* Skills styles */
 .skillCategory {
   margin-bottom: var(--spacing-lg);

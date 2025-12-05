@@ -1,0 +1,211 @@
+.container {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-primary);
+  background: rgba(0, 255, 0, 0.02);
+}
+
+.header {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.totalContributions {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+}
+
+.graph {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.months {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 4px;
+  font-size: 0.7rem;
+  color: var(--color-secondary);
+}
+
+.monthsOffset {
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.monthLabel {
+  width: 10px;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.grid {
+  display: flex;
+  gap: 4px;
+}
+
+.dayLabels {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.dayLabel {
+  height: 10px;
+  font-size: 0.65rem;
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  text-align: right;
+  padding-right: 4px;
+}
+
+.weeks {
+  display: flex;
+  gap: 2px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.day {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.day:hover {
+  transform: scale(1.5);
+  z-index: 10;
+  box-shadow: 0 0 8px var(--color-glow);
+}
+
+/* Contribution levels with terminal green theme */
+.level0 {
+  background: rgba(0, 50, 0, 0.3);
+  border-color: rgba(0, 255, 0, 0.2);
+}
+
+.level1 {
+  background: rgba(0, 100, 0, 0.5);
+  border-color: rgba(0, 255, 0, 0.3);
+}
+
+.level2 {
+  background: rgba(0, 150, 0, 0.7);
+  border-color: rgba(0, 255, 0, 0.5);
+}
+
+.level3 {
+  background: rgba(0, 200, 0, 0.85);
+  border-color: rgba(0, 255, 0, 0.7);
+}
+
+.level4 {
+  background: rgba(0, 255, 0, 0.9);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 4px rgba(0, 255, 0, 0.3);
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--spacing-sm);
+  font-size: 0.7rem;
+  color: var(--color-secondary);
+  justify-content: flex-end;
+}
+
+.legendLabel {
+  margin: 0 4px;
+}
+
+.legendSquare {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--color-primary);
+}
+
+.loading,
+.error,
+.noData {
+  padding: var(--spacing-md);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+}
+
+.error {
+  color: #ff5555;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+
+  .months {
+    font-size: 0.6rem;
+  }
+
+  .monthLabel {
+    width: 8px;
+  }
+
+  .dayLabels {
+    width: 25px;
+  }
+
+  .dayLabel {
+    font-size: 0.55rem;
+  }
+
+  .day {
+    width: 8px;
+    height: 8px;
+  }
+
+  .legendSquare {
+    width: 8px;
+    height: 8px;
+  }
+
+  .legend {
+    font-size: 0.65rem;
+  }
+}
+
+/* Scrollbar styling for weeks container */
+.weeks::-webkit-scrollbar {
+  height: 6px;
+}
+
+.weeks::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.weeks::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.weeks::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}

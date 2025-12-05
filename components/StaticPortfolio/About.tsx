@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Profile } from '@/types/profile';
+import ContributionMap from '@/components/GitHub/ContributionMap';
 import styles from './StaticPortfolio.module.css';
 
 export default function About() {
@@ -35,6 +36,14 @@ export default function About() {
         </div>
         <div className={styles.bio}>
           <p>{profile.bio}</p>
+        </div>
+
+        {/* GitHub Contribution Map */}
+        <div className={styles.contributionSection}>
+          <h3 className={styles.subsectionTitle}>
+            <span className={styles.prompt}>{'>'}</span> GitHub Activity
+          </h3>
+          <ContributionMap />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { getGitHubClient, GITHUB_USERNAME } from './client';
+import { GITHUB_USERNAME } from './client';
 
 export interface ContributionDay {
   date: string;
@@ -10,38 +10,80 @@ export interface ContributionWeek {
   days: ContributionDay[];
 }
 
+export interface ContributionData {
+  weeks: ContributionWeek[];
+  totalContributions: number;
+}
+
 export async function fetchContributionStats() {
   try {
-    const client = getGitHubClient();
+    const token = process.env.GITHUB_TOKEN;
 
-    // Fetch user's events (recent activity)
-    const { data: events } = await client.activity.listPublicEventsForUser({
-      username: GITHUB_USERNAME,
-      per_page: 100,
+    // Use GitHub GraphQL API for contribution data
+    const query = `
+      query($username: String!) {
+        user(login: $username) {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays {
+                  contributionCount
+                  date
+                  contributionLevel
+                }
+              }
+            }
+          }
+        }
+      }
+    `;
+
+    const response = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify({
+        query,
+        variables: { username: GITHUB_USERNAME },
+      }),
     });
 
-    // Fetch repositories to get total stars
-    const { data: repos } = await client.repos.listForUser({
-      username: GITHUB_USERNAME,
-      per_page: 100,
-    });
+    if (!response.ok) {
+      throw new Error(`GitHub API error: ${response.status}`);
+    }
 
-    const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
-    const totalRepos = repos.length;
+    const data = await response.json();
+
+    if (data.errors) {
+      throw new Error(data.errors[0].message);
+    }
+
+    const calendar = data.data?.user?.contributionsCollection?.contributionCalendar;
+
+    if (!calendar) {
+      throw new Error('No contribution data available');
+    }
+
+    const weeks: ContributionWeek[] = calendar.weeks.map((week: any) => ({
+      days: week.contributionDays.map((day: any) => ({
+        date: day.date,
+        count: day.contributionCount,
+        level: ['NONE', 'FIRST_QUARTILE', 'SECOND_QUARTILE', 'THIRD_QUARTILE', 'FOURTH_QUARTILE'].indexOf(day.contributionLevel),
+      })),
+    }));
 
     return {
-      totalStars,
-      totalRepos,
-      recentEvents: events.length,
-      lastUpdate: new Date().toISOString(),
+      weeks,
+      totalContributions: calendar.totalContributions,
     };
   } catch (error) {
     console.error('Failed to fetch contribution stats:', error);
     return {
-      totalStars: 0,
-      totalRepos: 0,
-      recentEvents: 0,
-      lastUpdate: new Date().toISOString(),
+      weeks: [],
+      totalContributions: 0,
     };
   }
 }
