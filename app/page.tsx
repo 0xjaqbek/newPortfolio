@@ -13,10 +13,32 @@ import ChatWindow from '@/components/AIChat/ChatWindow';
 import SettingsMenu from '@/components/Settings/SettingsMenu';
 import styles from './page.module.css';
 
+type Section = 'about' | 'skills' | 'experience' | 'projects' | 'contact' | 'chat';
+
 export default function Home() {
   const { theme } = useTheme();
   const [showBoot, setShowBoot] = useState(theme.showBootSequence);
   const [showSettings, setShowSettings] = useState(false);
+  const [activeSection, setActiveSection] = useState<Section>('about');
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'about':
+        return <About />;
+      case 'skills':
+        return <Skills />;
+      case 'experience':
+        return <Experience />;
+      case 'projects':
+        return <Projects />;
+      case 'contact':
+        return <Contact />;
+      case 'chat':
+        return <ChatWindow />;
+      default:
+        return <About />;
+    }
+  };
 
   return (
     <>
@@ -43,45 +65,50 @@ export default function Home() {
         <div className={styles.layout}>
           <aside className={styles.sidebar}>
             <nav className={styles.nav}>
-              <a href="#about" className={styles.navLink}>
+              <button
+                onClick={() => setActiveSection('about')}
+                className={`${styles.navLink} ${activeSection === 'about' ? styles.navLinkActive : ''}`}
+              >
                 [ ABOUT ]
-              </a>
-              <a href="#skills" className={styles.navLink}>
+              </button>
+              <button
+                onClick={() => setActiveSection('skills')}
+                className={`${styles.navLink} ${activeSection === 'skills' ? styles.navLinkActive : ''}`}
+              >
                 [ SKILLS ]
-              </a>
-              <a href="#experience" className={styles.navLink}>
+              </button>
+              <button
+                onClick={() => setActiveSection('experience')}
+                className={`${styles.navLink} ${activeSection === 'experience' ? styles.navLinkActive : ''}`}
+              >
                 [ EXPERIENCE ]
-              </a>
-              <a href="#projects" className={styles.navLink}>
+              </button>
+              <button
+                onClick={() => setActiveSection('projects')}
+                className={`${styles.navLink} ${activeSection === 'projects' ? styles.navLinkActive : ''}`}
+              >
                 [ PROJECTS ]
-              </a>
-              <a href="#contact" className={styles.navLink}>
+              </button>
+              <button
+                onClick={() => setActiveSection('contact')}
+                className={`${styles.navLink} ${activeSection === 'contact' ? styles.navLinkActive : ''}`}
+              >
                 [ CONTACT ]
-              </a>
+              </button>
+              <button
+                onClick={() => setActiveSection('chat')}
+                className={`${styles.navLink} ${activeSection === 'chat' ? styles.navLinkActive : ''}`}
+              >
+                [ AI CHAT ]
+              </button>
             </nav>
           </aside>
 
           <main className={styles.main}>
-            <section id="about">
-              <About />
-            </section>
-            <section id="skills">
-              <Skills />
-            </section>
-            <section id="experience">
-              <Experience />
-            </section>
-            <section id="projects">
-              <Projects />
-            </section>
-            <section id="contact">
-              <Contact />
-            </section>
+            <div className={styles.contentContainer}>
+              {renderContent()}
+            </div>
           </main>
-
-          <aside className={styles.chatSidebar}>
-            <ChatWindow />
-          </aside>
         </div>
       </Terminal>
     </>

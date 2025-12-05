@@ -8,7 +8,13 @@
       "Bash(npm run dev:*)",
       "Bash(heroku create:*)",
       "Bash(heroku config:set:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(heroku apps:info:*)",
+      "Bash(heroku git:remote:*)",
+      "Bash(heroku auth:whoami:*)",
+      "Bash(heroku login:*)",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": [],
     "ask": []
