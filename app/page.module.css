@@ -7,6 +7,12 @@
   border-bottom: 1px solid var(--color-primary);
 }
 
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
 .logo {
   font-size: 1.2rem;
   font-weight: normal;
@@ -21,6 +27,79 @@
 .settingsButton {
   font-size: 0.85rem;
   padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.2rem;
+  padding: var(--spacing-xs);
+  background: none;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.hamburger:hover {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.desktopOnly {
+  display: block;
+}
+
+.mobileMenu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg);
+  z-index: 1000;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  border: 2px solid var(--color-primary);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.mobileNavSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.mobileNavTitle {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  font-weight: normal;
+  margin: 0 0 var(--spacing-xs) 0;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.mobileNavLink {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-primary);
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mobileNavLink:hover {
+  background: rgba(0, 255, 0, 0.1);
 }
 
 .layout {
@@ -95,13 +174,32 @@
 /* Mobile view */
 @media (max-width: 768px) {
   .header {
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .headerLeft {
+    flex: 1;
   }
 
   .logo {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .prompt {
+    margin-right: 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: block;
   }
 
   .layout {
@@ -110,24 +208,14 @@
   }
 
   .sidebar {
-    position: relative;
-    top: 0;
-  }
-
-  .nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--spacing-xs);
-  }
-
-  .navLink {
-    font-size: 0.85rem;
-    padding: var(--spacing-xs);
-    flex: 1 1 auto;
-    min-width: fit-content;
+    display: none;
   }
 
   .main {
     min-height: auto;
+  }
+
+  .contentContainer {
+    min-height: calc(100vh - 200px);
   }
 }

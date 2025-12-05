@@ -20,6 +20,7 @@ export default function Home() {
   const [showBoot, setShowBoot] = useState(theme.showBootSequence);
   const [showSettings, setShowSettings] = useState(false);
   const [activeSection, setActiveSection] = useState<Section>('about');
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const renderContent = () => {
     switch (activeSection) {
@@ -40,17 +41,38 @@ export default function Home() {
     }
   };
 
+  const handleSectionChange = (section: Section) => {
+    setActiveSection(section);
+    setShowMobileMenu(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
+    if (!showMobileMenu) {
+      setShowSettings(false);
+    }
+  };
+
   return (
     <>
       {showBoot && <BootSequence onComplete={() => setShowBoot(false)} />}
 
       <Terminal>
         <div className={styles.header}>
-          <h1 className={styles.logo}>
-            <span className={styles.prompt}>root@portfolio:~$</span>
-          </h1>
+          <div className={styles.headerLeft}>
+            <button
+              className={styles.hamburger}
+              onClick={toggleMobileMenu}
+              aria-label="Menu"
+            >
+              {showMobileMenu ? '[X]' : '[≡]'}
+            </button>
+            <h1 className={styles.logo}>
+              <span className={styles.prompt}>root@portfolio:~$</span>
+            </h1>
+          </div>
           <button
-            className={styles.settingsButton}
+            className={`${styles.settingsButton} ${styles.desktopOnly}`}
             onClick={() => setShowSettings(!showSettings)}
             aria-label="Settings"
           >
@@ -58,8 +80,65 @@ export default function Home() {
           </button>
         </div>
 
-        {showSettings && (
+        {showSettings && !showMobileMenu && (
           <SettingsMenu onClose={() => setShowSettings(false)} />
+        )}
+
+        {showMobileMenu && (
+          <div className={styles.mobileMenu}>
+            <nav className={styles.mobileNav}>
+              <div className={styles.mobileNavSection}>
+                <h3 className={styles.mobileNavTitle}>SECTIONS</h3>
+                <button
+                  onClick={() => handleSectionChange('about')}
+                  className={`${styles.mobileNavLink} ${activeSection === 'about' ? styles.navLinkActive : ''}`}
+                >
+                  [ ABOUT ]
+                </button>
+                <button
+                  onClick={() => handleSectionChange('skills')}
+                  className={`${styles.mobileNavLink} ${activeSection === 'skills' ? styles.navLinkActive : ''}`}
+                >
+                  [ SKILLS ]
+                </button>
+                <button
+                  onClick={() => handleSectionChange('experience')}
+                  className={`${styles.mobileNavLink} ${activeSection === 'experience' ? styles.navLinkActive : ''}`}
+                >
+                  [ EXPERIENCE ]
+                </button>
+                <button
+                  onClick={() => handleSectionChange('projects')}
+                  className={`${styles.mobileNavLink} ${activeSection === 'projects' ? styles.navLinkActive : ''}`}
+                >
+                  [ PROJECTS ]
+                </button>
+                <button
+                  onClick={() => handleSectionChange('contact')}
+                  className={`${styles.mobileNavLink} ${activeSection === 'contact' ? styles.navLinkActive : ''}`}
+                >
+                  [ CONTACT ]
+                </button>
+                <button
+                  onClick={() => handleSectionChange('chat')}
+                  className={`${styles.mobileNavLink} ${activeSection === 'chat' ? styles.navLinkActive : ''}`}
+                >
+                  [ AI CHAT ]
+                </button>
+              </div>
+              <div className={styles.mobileNavSection}>
+                <button
+                  onClick={() => {
+                    setShowSettings(!showSettings);
+                    setShowMobileMenu(false);
+                  }}
+                  className={styles.mobileNavLink}
+                >
+                  [ SETTINGS ]
+                </button>
+              </div>
+            </nav>
+          </div>
         )}
 
         <div className={styles.layout}>
