@@ -26,7 +26,7 @@ export default function Contact() {
       <div className={styles.content}>
         <div className={styles.contactGrid}>
           <div className={styles.contactItem}>
-            <span className={styles.contactLabel}>Email:</span>
+            <span className={styles.contactLabel}></span>
             <a href={`mailto:${profile.contact.email}`} className={styles.contactLink}>
               {profile.contact.email}
             </a>
