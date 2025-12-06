@@ -119,8 +119,8 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
   .chatWindow {
-    height: calc(100vh - 240px);
-    max-height: calc(100vh - 240px);
+    height: calc(100vh - 140px);
+    max-height: calc(100vh - 140px);
   }
 
   .messagesContainer {
