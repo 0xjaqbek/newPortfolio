@@ -30,7 +30,7 @@
 
 .months {
   display: flex;
-  gap: 2px;
+  gap: 0;
   margin-bottom: 4px;
   font-size: 0.7rem;
   color: var(--color-secondary);
@@ -45,6 +45,7 @@
   width: 10px;
   text-align: left;
   flex-shrink: 0;
+  margin-right: 2px;
 }
 
 .grid {
@@ -198,10 +199,12 @@
     font-size: 0.55rem;
     min-width: max-content;
     margin-bottom: 2px;
+    gap: 0;
   }
 
   .monthLabel {
     width: 8px;
+    margin-right: 1px;
   }
 
   .grid {
