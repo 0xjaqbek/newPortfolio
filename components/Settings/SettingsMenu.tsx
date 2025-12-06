@@ -11,7 +11,7 @@ export default function SettingsMenu({ onClose }: SettingsMenuProps) {
   const { theme, updateTheme, resetTheme } = useTheme();
 
   const colorSchemes: { value: ColorScheme; label: string }[] = [
-    { value: 'green-phosphor', label: 'Green Phosphor' },
+    { value: 'green-phosphor', label: 'Claude Code' },
     { value: 'amber', label: 'Amber Monitor' },
     { value: 'monochrome', label: 'Monochrome' },
     { value: 'matrix', label: 'Matrix Green' },

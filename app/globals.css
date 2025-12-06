@@ -1,10 +1,10 @@
 :root {
   /* Color variables - dynamically set by ThemeContext */
-  --color-primary: #00ff00;
-  --color-secondary: #00cc00;
-  --color-background: #0a0a0a;
-  --color-text: #00ff00;
-  --color-glow: rgba(0, 255, 0, 0.5);
+  --color-primary: #F97316;
+  --color-secondary: #FB923C;
+  --color-background: #1E1E2E;
+  --color-text: #E5E7EB;
+  --color-glow: rgba(249, 115, 22, 0.3);
 
   /* Effect variables */
   --scanlines-opacity: 0.1;

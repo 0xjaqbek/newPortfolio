@@ -98,11 +98,11 @@ function applyThemeToDOM(theme: ThemeSettings) {
   // Color scheme presets
   const colorSchemes = {
     'green-phosphor': {
-      primary: '#00ff00',
-      secondary: '#00cc00',
-      background: '#0a0a0a',
-      text: '#00ff00',
-      glow: 'rgba(0, 255, 0, 0.5)',
+      primary: '#F97316',
+      secondary: '#FB923C',
+      background: '#1E1E2E',
+      text: '#E5E7EB',
+      glow: 'rgba(249, 115, 22, 0.3)',
     },
     amber: {
       primary: '#ffb000',
