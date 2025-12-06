@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import Terminal from '@/components/Terminal/Terminal';
 import BootSequence from '@/components/Terminal/BootSequence';
@@ -21,6 +21,13 @@ export default function Home() {
   const [showSettings, setShowSettings] = useState(false);
   const [activeSection, setActiveSection] = useState<Section>('about');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  // Set chat as default on mobile
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setActiveSection('chat');
+    }
+  }, []);
 
   const renderContent = () => {
     switch (activeSection) {

@@ -81,6 +81,9 @@ export default function ChatWindow() {
               Ask me about Jakub's skills, projects, or discuss potential
               collaborations.
             </p>
+            <p className={styles.welcomeText}>
+              You can also browse other sections using the menu [≡].
+            </p>
           </div>
         ) : (
           <>
