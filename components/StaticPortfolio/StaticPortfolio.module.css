@@ -334,7 +334,14 @@
     align-items: flex-start;
   }
 
-  .contactNote {
-    margin-left:var(--spacing-sm);
+  .contactItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
   }
+
+  .contactLabel {
+    min-width: auto;
+  }
+
 }
