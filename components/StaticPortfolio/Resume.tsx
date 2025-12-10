@@ -14,15 +14,65 @@ export default function Resume() {
       .catch((err) => console.error('Failed to load profile:', err));
   }, []);
 
+  const downloadResumeJSON = () => {
+    if (!profile) return;
+
+    const resumeData = {
+      name: profile.name,
+      title: profile.title,
+      location: profile.location,
+      contact: profile.contact,
+      summary: "Full-stack developer specializing in Web3 and AI solutions. ETH Warsaw 2025 winner (3rd place). Built production platforms serving users across Poland. Expert in Next.js, Solidity, and AI integration.",
+      skills: {
+        "web3_blockchain": ["Solidity", "Smart Contracts", "Base", "OnchainKit", "Web3.js"],
+        "full_stack": ["Next.js", "React", "TypeScript", "Node.js", "Tailwind CSS"],
+        "ai_data": ["OpenAI API", "DeepSeek", "MongoDB", "PostgreSQL", "Firebase"]
+      },
+      experience: profile.experience.map(exp => ({
+        title: exp.title,
+        company: exp.company,
+        location: exp.location,
+        period: {
+          start: exp.period.start,
+          end: exp.period.end
+        },
+        description: exp.description,
+        top_achievements: exp.achievements?.slice(0, 2) || [],
+        technologies: exp.technologies
+      })),
+      highlights: [
+        "3rd Place - ETH Warsaw 2025 Hackathon (Web3 mentorship platform)",
+        "Founded Protokół 999 - Production medical training platform (protokol999.pl)",
+        "Built multiple Web3 dApps with smart contracts on Base & EVM chains"
+      ],
+      education: "Self-taught developer • Intensive project-based learning since elementary school • Active in hackathons & open-source"
+    };
+
+    const blob = new Blob([JSON.stringify(resumeData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${profile.name.replace(/\s+/g, '_')}_Resume.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   if (!profile) {
     return <div className={styles.loading}>LOADING...</div>;
   }
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.sectionTitle}>
-        <span className={styles.prompt}>$</span> cat resume.txt
-      </h2>
+      <div className={styles.resumeTitleRow}>
+        <h2 className={styles.sectionTitle}>
+          <span className={styles.prompt}>$</span> cat resume.txt
+        </h2>
+        <button onClick={downloadResumeJSON} className={styles.downloadButton}>
+          [ DOWNLOAD JSON ]
+        </button>
+      </div>
       <div className={styles.content}>
         {/* Header */}
         <div className={styles.resumeHeader}>

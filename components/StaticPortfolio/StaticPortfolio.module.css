@@ -303,6 +303,36 @@
 }
 
 /* Resume styles */
+.resumeTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.downloadButton {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.downloadButton:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.downloadButton:active {
+  transform: translateY(1px);
+}
+
 .resumeHeader {
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-md);
@@ -562,6 +592,17 @@
 
   .contactLabel {
     min-width: auto;
+  }
+
+  .resumeTitleRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .downloadButton {
+    width: 100%;
+    text-align: center;
   }
 
 }
