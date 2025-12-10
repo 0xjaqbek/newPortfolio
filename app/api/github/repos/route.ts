@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { fetchAllRepos } from '@/lib/github/repos';
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 60; // Revalidate every minute (was 3600)
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
 
 export async function GET() {
   try {
