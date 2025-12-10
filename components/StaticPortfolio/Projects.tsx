@@ -18,6 +18,8 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
+  const [repoReadmes, setRepoReadmes] = useState<Record<string, string>>({});
+  const [loadingReadme, setLoadingReadme] = useState<string | null>(null);
 
   useEffect(() => {
     // Fetch both GitHub repos and private projects
@@ -57,6 +59,43 @@ export default function Projects() {
         setLoading(false);
       });
   }, []);
+
+  const fetchReadme = async (repoFullName: string) => {
+    // If already expanded, collapse it
+    if (expandedProject === `repo-${repoFullName}`) {
+      setExpandedProject(null);
+      return;
+    }
+
+    // If README already fetched, just expand
+    if (repoReadmes[repoFullName]) {
+      setExpandedProject(`repo-${repoFullName}`);
+      return;
+    }
+
+    // Fetch README
+    setLoadingReadme(repoFullName);
+    const [owner, repo] = repoFullName.split('/');
+
+    try {
+      const response = await fetch(`/api/github/readme?owner=${owner}&repo=${repo}`);
+      const data = await response.json();
+
+      if (data.readme) {
+        setRepoReadmes(prev => ({ ...prev, [repoFullName]: data.readme }));
+        setExpandedProject(`repo-${repoFullName}`);
+      } else {
+        setRepoReadmes(prev => ({ ...prev, [repoFullName]: 'README not available for this repository.' }));
+        setExpandedProject(`repo-${repoFullName}`);
+      }
+    } catch (err) {
+      console.error('Failed to fetch README:', err);
+      setRepoReadmes(prev => ({ ...prev, [repoFullName]: 'Failed to load README.' }));
+      setExpandedProject(`repo-${repoFullName}`);
+    } finally {
+      setLoadingReadme(null);
+    }
+  };
 
   if (loading) {
     return <div className={styles.loading}>LOADING PROJECTS FROM GITHUB...</div>;
@@ -150,6 +189,17 @@ export default function Projects() {
                   </span>
                 </div>
                 <div className={styles.projectLinks}>
+                  <button
+                    onClick={() => fetchReadme(repo.full_name)}
+                    className={styles.projectLink}
+                    disabled={loadingReadme === repo.full_name}
+                  >
+                    {'>'} {loadingReadme === repo.full_name
+                      ? 'Loading...'
+                      : expandedProject === `repo-${repo.full_name}`
+                        ? 'Hide README'
+                        : 'View README'}
+                  </button>
                   <a
                     href={repo.html_url}
                     target="_blank"
@@ -169,6 +219,11 @@ export default function Projects() {
                     </a>
                   )}
                 </div>
+                {expandedProject === `repo-${repo.full_name}` && repoReadmes[repo.full_name] && (
+                  <div className={styles.projectReadme}>
+                    <pre className={styles.readmeContent}>{repoReadmes[repo.full_name]}</pre>
+                  </div>
+                )}
               </div>
             ))}
           </div>
