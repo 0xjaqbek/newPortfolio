@@ -46,6 +46,44 @@ export async function fetchPublicRepos(): Promise<GitHubRepo[]> {
   }
 }
 
+export async function fetchAllRepos(): Promise<GitHubRepo[]> {
+  try {
+    const client = getGitHubClient();
+
+    // Check if we have a token to fetch private repos
+    if (process.env.GITHUB_TOKEN) {
+      const { data } = await client.repos.listForAuthenticatedUser({
+        sort: 'updated',
+        per_page: 100,
+        affiliation: 'owner',
+      });
+
+      return data.map((repo) => ({
+        id: repo.id,
+        name: repo.name,
+        full_name: repo.full_name,
+        description: repo.description,
+        html_url: repo.html_url,
+        homepage: repo.homepage || null,
+        language: repo.language || null,
+        stargazers_count: repo.stargazers_count || 0,
+        forks_count: repo.forks_count || 0,
+        topics: repo.topics || [],
+        created_at: repo.created_at || new Date().toISOString(),
+        updated_at: repo.updated_at || new Date().toISOString(),
+        pushed_at: repo.pushed_at || new Date().toISOString(),
+      }));
+    } else {
+      // Fallback to public repos if no token
+      return fetchPublicRepos();
+    }
+  } catch (error) {
+    console.error('Failed to fetch GitHub repos:', error);
+    // Fallback to public repos on error
+    return fetchPublicRepos();
+  }
+}
+
 export async function fetchRepoReadme(owner: string, repo: string): Promise<string | null> {
   try {
     const client = getGitHubClient();
