@@ -21,6 +21,10 @@ export default function Projects() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [repoReadmes, setRepoReadmes] = useState<Record<string, string>>({});
   const [loadingReadme, setLoadingReadme] = useState<string | null>(null);
+  const [showGallery, setShowGallery] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const epGalleryImages = ['/111.jpg', '/222.jpg', '/333.jpg', '/444.jpg'];
 
   useEffect(() => {
     // Fetch both GitHub repos and private projects
@@ -96,6 +100,26 @@ export default function Projects() {
     } finally {
       setLoadingReadme(null);
     }
+  };
+
+  const handleLiveDemoClick = (e: React.MouseEvent, repoName: string, homepage: string) => {
+    // For ep repository, show gallery instead of navigating
+    if (repoName === 'ep') {
+      e.preventDefault();
+      setShowGallery(true);
+      setCurrentImageIndex(0);
+    } else {
+      // For other repos, navigate normally
+      window.open(homepage, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % epGalleryImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + epGalleryImages.length) % epGalleryImages.length);
   };
 
   if (loading) {
@@ -220,14 +244,12 @@ export default function Projects() {
                     {'>'} GitHub
                   </a>
                   {repo.homepage && (
-                    <a
-                      href={repo.homepage}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      onClick={(e) => handleLiveDemoClick(e, repo.name, repo.homepage!)}
                       className={styles.projectLink}
                     >
                       {'>'} Live Demo
-                    </a>
+                    </button>
                   )}
                 </div>
                 {expandedProject === `repo-${repo.full_name}` && repoReadmes[repo.full_name] && (
@@ -237,6 +259,33 @@ export default function Projects() {
                 )}
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Image Gallery Modal for ep (Protokół 999) */}
+        {showGallery && (
+          <div className={styles.galleryModal} onClick={() => setShowGallery(false)}>
+            <div className={styles.galleryContent} onClick={(e) => e.stopPropagation()}>
+              <button className={styles.galleryClose} onClick={() => setShowGallery(false)}>
+                ✕
+              </button>
+              <div className={styles.galleryImageContainer}>
+                <button className={styles.galleryNav} onClick={prevImage}>
+                  ‹
+                </button>
+                <img
+                  src={epGalleryImages[currentImageIndex]}
+                  alt={`Protokół 999 screenshot ${currentImageIndex + 1}`}
+                  className={styles.galleryImage}
+                />
+                <button className={styles.galleryNav} onClick={nextImage}>
+                  ›
+                </button>
+              </div>
+              <div className={styles.galleryCounter}>
+                {currentImageIndex + 1} / {epGalleryImages.length}
+              </div>
+            </div>
           </div>
         )}
       </div>

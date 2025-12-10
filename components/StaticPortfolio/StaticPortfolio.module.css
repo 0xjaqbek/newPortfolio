@@ -606,3 +606,130 @@
   }
 
 }
+
+/* Image Gallery Modal */
+.galleryModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.galleryContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.galleryClose {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s;
+}
+
+.galleryClose:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+.galleryImageContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  max-width: 100%;
+}
+
+.galleryImage {
+  max-width: 80vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 20px var(--color-glow);
+}
+
+.galleryNav {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 3rem;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s;
+  line-height: 1;
+}
+
+.galleryNav:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+.galleryCounter {
+  color: var(--color-primary);
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .galleryNav {
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+  }
+
+  .galleryClose {
+    top: -35px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+
+  .galleryImage {
+    max-width: 90vw;
+    max-height: 70vh;
+  }
+
+  .galleryImageContainer {
+    gap: var(--spacing-sm);
+  }
+}
