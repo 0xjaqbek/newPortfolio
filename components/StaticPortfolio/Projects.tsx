@@ -102,16 +102,9 @@ export default function Projects() {
     }
   };
 
-  const handleLiveDemoClick = (e: React.MouseEvent, repoName: string, homepage: string) => {
-    // For ep repository, show gallery instead of navigating
-    if (repoName === 'ep') {
-      e.preventDefault();
-      setShowGallery(true);
-      setCurrentImageIndex(0);
-    } else {
-      // For other repos, navigate normally
-      window.open(homepage, '_blank', 'noopener,noreferrer');
-    }
+  const handleGalleryClick = () => {
+    setShowGallery(true);
+    setCurrentImageIndex(0);
   };
 
   const nextImage = () => {
@@ -172,7 +165,14 @@ export default function Projects() {
                   >
                     {'>'} {expandedProject === project.id ? 'Hide Details' : 'View Details'}
                   </button>
-                  {project.demoUrl && (
+                  {project.id === 'protokol999' ? (
+                    <button
+                      onClick={handleGalleryClick}
+                      className={styles.projectLink}
+                    >
+                      {'>'} View Gallery
+                    </button>
+                  ) : project.demoUrl && (
                     <a
                       href={project.demoUrl}
                       target="_blank"
@@ -244,12 +244,14 @@ export default function Projects() {
                     {'>'} GitHub
                   </a>
                   {repo.homepage && (
-                    <button
-                      onClick={(e) => handleLiveDemoClick(e, repo.name, repo.homepage!)}
+                    <a
+                      href={repo.homepage}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={styles.projectLink}
                     >
                       {'>'} Live Demo
-                    </button>
+                    </a>
                   )}
                 </div>
                 {expandedProject === `repo-${repo.full_name}` && repoReadmes[repo.full_name] && (
@@ -275,7 +277,7 @@ export default function Projects() {
                 </button>
                 <img
                   src={epGalleryImages[currentImageIndex]}
-                  alt={`Protokół 999 screenshot ${currentImageIndex + 1}`}
+                  alt={`Protokół 999 - Medical Training Platform Screenshot ${currentImageIndex + 1}`}
                   className={styles.galleryImage}
                 />
                 <button className={styles.galleryNav} onClick={nextImage}>
