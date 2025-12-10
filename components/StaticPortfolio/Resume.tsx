@@ -143,9 +143,11 @@ export default function Resume() {
                       ))}
                     </ul>
                   )}
-                  <div className={styles.resumeExpTech}>
-                    <strong>Technologies:</strong> {exp.technologies.join(', ')}
-                  </div>
+                  {exp.technologies && exp.technologies.length > 0 && (
+                    <div className={styles.resumeExpTech}>
+                      <strong>Technologies:</strong> {exp.technologies.join(', ')}
+                    </div>
+                  )}
                 </div>
               );
             })}
