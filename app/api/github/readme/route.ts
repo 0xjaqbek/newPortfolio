@@ -17,16 +17,15 @@ export async function GET(request: NextRequest) {
     const readme = await fetchRepoReadme(owner, repo);
     if (!readme) {
       return NextResponse.json(
-        { error: 'README not found' },
-        { status: 404 }
+        { readme: `# ${repo}\n\nREADME not available for this repository.` }
       );
     }
     return NextResponse.json({ readme });
-  } catch (error) {
+  } catch (error: any) {
     console.error('GitHub README API error:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch README' },
-      { status: 500 }
-    );
+    // Return a friendly error message instead of failing
+    return NextResponse.json({
+      readme: `# ${repo}\n\nUnable to load README. This may be a private repository or the README may not be accessible.\n\nError: ${error?.message || 'Unknown error'}`
+    });
   }
 }
