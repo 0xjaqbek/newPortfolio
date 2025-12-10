@@ -23,7 +23,10 @@ ${profile.contact.telegram ? `- Telegram: ${profile.contact.telegram}` : ''}
 ### Skills
 Languages: ${profile.skills.languages.join(', ')}
 Frameworks: ${profile.skills.frameworks.join(', ')}
+Blockchain: ${profile.skills.blockchain.join(', ')}
+AI/ML: ${profile.skills['ai-ml'].join(', ')}
 Tools: ${profile.skills.tools.join(', ')}
+Databases: ${profile.skills.databases.join(', ')}
 Other: ${profile.skills.other.join(', ')}
 
 ### Work Experience

@@ -1,20 +1,107 @@
 {
   "personalityTraits": [
-    "Add personality traits here during knowledge gathering phase"
+    "Self-motivated and passionate about technology",
+    "Continuous learner who embraces new technologies rapidly",
+    "Results-driven with focus on building production-ready solutions",
+    "Leverages AI and modern tools to accelerate development",
+    "Detail-oriented with strong problem-solving skills",
+    "Collaborative and open to feedback"
   ],
   "workingStyle": [
-    "Preferences about how you work, communication style, etc."
+    "Fast-paced development using modern frameworks and AI assistance",
+    "Prefers hands-on, practical learning over theoretical study",
+    "Thrives in hackathons and competitive environments",
+    "Focuses on building real-world applications with tangible impact",
+    "Self-directed learning since elementary school, intensified over past 3 years",
+    "Available for remote work and distributed team collaboration",
+    "Based in Kaszuby, Pomorskie voivodeship, Poland"
   ],
   "interests": [
-    "Technical interests beyond work"
+    "Web3 and blockchain technology (especially EVM-compatible chains)",
+    "AI integration in web applications",
+    "Medical technology and healthcare solutions",
+    "Building developer tools and platforms",
+    "Open-source contributions",
+    "Hackathons and competitive programming",
+    "Decentralized systems and dApp development",
+    "Real-time communication systems (WebSockets, video calls)",
+    "Smart contract development and DeFi"
   ],
   "careerGoals": [
-    "Where you want to go professionally"
+    "Continue building innovative Web3 and AI-powered products",
+    "Expand expertise in blockchain infrastructure and smart contracts",
+    "Launch more production applications serving real users",
+    "Contribute to meaningful open-source projects",
+    "Win more hackathons and build recognition in Web3 space",
+    "Bridge traditional web development with decentralized systems",
+    "Build solutions that have real-world impact (like medical training platform)"
   ],
   "philosophies": [
-    "Your thoughts on development, technology, etc."
+    "Learning by building - practical experience over theory",
+    "AI is a tool for acceleration, not a replacement for understanding",
+    "Code quality matters, but shipping working products matters more",
+    "Web3 and blockchain have potential to transform how we build applications",
+    "Healthcare and medical education can benefit greatly from technology",
+    "Open-source collaboration drives innovation",
+    "Modern development is about combining the right tools, not building everything from scratch"
   ],
   "funFacts": [
-    "Interesting things about you that aren't in the formal bio"
+    "Started coding in elementary school",
+    "Won 3rd place at ETH Warsaw 2025 hackathon",
+    "Built a production medical training platform that serves students across Poland",
+    "Located in Kaszuby region (cultural region in northern Poland known for unique traditions)",
+    "Intensified development skills dramatically over past 3 years through AI-assisted learning",
+    "Comfortable working with cutting-edge tech (Next.js 15, Base blockchain, AI APIs)",
+    "Has experience with both traditional web apps and decentralized applications",
+    "Uses terminal-themed portfolio with retro CRT effects (very fitting for a developer!)"
+  ],
+  "technicalSpecialties": [
+    "Full-stack Next.js applications with TypeScript",
+    "Smart contract development on EVM chains (especially Base)",
+    "AI integration (OpenAI, DeepSeek, LangChain)",
+    "Real-time features (WebSockets, video calls)",
+    "Medical/healthcare application development",
+    "Telegram bot development",
+    "Firebase and cloud infrastructure",
+    "Responsive design and mobile-first development",
+    "Blockchain integration with OnchainKit",
+    "Escrow contracts and DeFi mechanics"
+  ],
+  "notableProjects": {
+    "protokol999": {
+      "type": "Production Application",
+      "description": "AI-powered medical emergency training platform for paramedic students",
+      "impact": "Serving medical students across Poland",
+      "techHighlights": ["AI scenario engine", "Real-time feedback", "Progress tracking", "ERC 2021 Guidelines compliance"],
+      "url": "protokol999.pl"
+    },
+    "34us_web3onboarder": {
+      "type": "Hackathon Winner",
+      "description": "Web3 mentorship platform with AI matching and blockchain payments",
+      "achievement": "3rd place at ETH Warsaw 2025",
+      "techHighlights": ["AI mentor matching", "Base blockchain", "Smart contract escrow", "RedStone price feeds", "Golem DB integration"],
+      "significance": "Award-winning project demonstrating full-stack Web3 capabilities"
+    },
+    "terminalPortfolio": {
+      "type": "Personal Project",
+      "description": "Terminal-themed portfolio with AI chatbot and GitHub integration",
+      "techHighlights": ["CRT effects", "AI chatbot", "GitHub API integration", "Heroku deployment"],
+      "significance": "Showcases design skills and modern web development practices"
+    }
+  },
+  "communicationPreferences": [
+    "Email: jaqbek.eth@gmail.com",
+    "Twitter: @jaqbek_eth",
+    "Telegram: @jaqbek",
+    "GitHub: @0xjaqbek",
+    "Open to discussing project collaborations, freelance work, and Web3 opportunities"
+  ],
+  "additionalContext": [
+    "Self-taught developer who values practical skills over formal education",
+    "Experienced with modern development workflows (Git, CI/CD, cloud deployment)",
+    "Comfortable working across the full stack from smart contracts to frontend UI",
+    "Has shipped multiple production applications, not just side projects",
+    "Active in Web3 community and hackathon scene",
+    "Passionate about using technology to solve real problems (medical training, onboarding to Web3)"
   ]
 }

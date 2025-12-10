@@ -16,7 +16,8 @@
       "Bash(heroku login:*)",
       "mcp__ide__getDiagnostics",
       "Bash(git push:*)",
-      "Bash(heroku config:*)"
+      "Bash(heroku config:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
