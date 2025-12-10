@@ -13,7 +13,10 @@ export interface Profile {
   skills: {
     languages: string[];
     frameworks: string[];
+    blockchain: string[];
+    'ai-ml': string[];
     tools: string[];
+    databases: string[];
     other: string[];
   };
 
