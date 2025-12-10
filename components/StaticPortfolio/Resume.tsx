@@ -76,34 +76,39 @@ export default function Resume() {
         {/* Professional Summary */}
         <div className={styles.resumeSection}>
           <h3 className={styles.resumeSectionTitle}>
-            <span className={styles.prompt}>{'>'}</span> PROFESSIONAL SUMMARY
+            <span className={styles.prompt}>{'>'}</span> SUMMARY
           </h3>
-          <p className={styles.resumeText}>{profile.bio}</p>
+          <p className={styles.resumeText}>
+            Full-stack developer specializing in Web3 and AI solutions. ETH Warsaw 2025 winner (3rd place).
+            Built production platforms serving users across Poland. Expert in Next.js, Solidity, and AI integration.
+          </p>
         </div>
 
-        {/* Technical Skills */}
+        {/* Key Skills - Condensed */}
         <div className={styles.resumeSection}>
           <h3 className={styles.resumeSectionTitle}>
-            <span className={styles.prompt}>{'>'}</span> TECHNICAL SKILLS
+            <span className={styles.prompt}>{'>'}</span> KEY SKILLS
           </h3>
           <div className={styles.resumeSkills}>
-            {Object.entries(profile.skills).map(([category, skills]) => (
-              <div key={category} className={styles.resumeSkillCategory}>
-                <strong className={styles.resumeSkillLabel}>
-                  {category.charAt(0).toUpperCase() + category.slice(1).replace(/-/g, ' ')}:
-                </strong>
-                <span className={styles.resumeSkillList}>
-                  {Array.isArray(skills) ? skills.join(', ') : skills}
-                </span>
-              </div>
-            ))}
+            <div className={styles.resumeSkillCategory}>
+              <strong className={styles.resumeSkillLabel}>Web3/Blockchain:</strong>
+              <span className={styles.resumeSkillList}>Solidity, Smart Contracts, Base, OnchainKit, Web3.js</span>
+            </div>
+            <div className={styles.resumeSkillCategory}>
+              <strong className={styles.resumeSkillLabel}>Full Stack:</strong>
+              <span className={styles.resumeSkillList}>Next.js, React, TypeScript, Node.js, Tailwind CSS</span>
+            </div>
+            <div className={styles.resumeSkillCategory}>
+              <strong className={styles.resumeSkillLabel}>AI & Data:</strong>
+              <span className={styles.resumeSkillList}>OpenAI API, DeepSeek, MongoDB, PostgreSQL, Firebase</span>
+            </div>
           </div>
         </div>
 
         {/* Professional Experience */}
         <div className={styles.resumeSection}>
           <h3 className={styles.resumeSectionTitle}>
-            <span className={styles.prompt}>{'>'}</span> PROFESSIONAL EXPERIENCE
+            <span className={styles.prompt}>{'>'}</span> EXPERIENCE
           </h3>
           <div className={styles.timeline}>
             {profile.experience.map((exp) => {
@@ -114,20 +119,17 @@ export default function Resume() {
               const years = Math.floor(months / 12);
               const remainingMonths = months % 12;
               const duration = years > 0
-                ? `${years} year${years > 1 ? 's' : ''}${remainingMonths > 0 ? ` ${remainingMonths} month${remainingMonths > 1 ? 's' : ''}` : ''}`
-                : `${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
+                ? `${years}y${remainingMonths > 0 ? ` ${remainingMonths}m` : ''}`
+                : `${remainingMonths}m`;
 
               return (
                 <div key={exp.id} className={styles.resumeExperience}>
                   <div className={styles.resumeExpHeader}>
                     <h4 className={styles.resumeExpTitle}>{exp.title}</h4>
-                    <span className={styles.resumeExpDuration}>({duration})</span>
+                    <span className={styles.resumeExpDuration}>{duration}</span>
                   </div>
                   <p className={styles.resumeExpCompany}>
-                    {exp.company} | {exp.location}
-                  </p>
-                  <p className={styles.resumeExpPeriod}>
-                    {new Date(exp.period.start).toLocaleDateString('en-US', {
+                    {exp.company} | {new Date(exp.period.start).toLocaleDateString('en-US', {
                       month: 'short',
                       year: 'numeric'
                     })} - {exp.period.end === 'Present' ? 'Present' : new Date(exp.period.end).toLocaleDateString('en-US', {
@@ -138,15 +140,10 @@ export default function Resume() {
                   <p className={styles.resumeExpDescription}>{exp.description}</p>
                   {exp.achievements && exp.achievements.length > 0 && (
                     <ul className={styles.resumeExpAchievements}>
-                      {exp.achievements.map((achievement, idx) => (
+                      {exp.achievements.slice(0, 2).map((achievement, idx) => (
                         <li key={idx}>{achievement}</li>
                       ))}
                     </ul>
-                  )}
-                  {exp.technologies && exp.technologies.length > 0 && (
-                    <div className={styles.resumeExpTech}>
-                      <strong>Technologies:</strong> {exp.technologies.join(', ')}
-                    </div>
                   )}
                 </div>
               );
@@ -154,46 +151,25 @@ export default function Resume() {
           </div>
         </div>
 
-        {/* Education & Certifications */}
-        <div className={styles.resumeSection}>
-          <h3 className={styles.resumeSectionTitle}>
-            <span className={styles.prompt}>{'>'}</span> EDUCATION & LEARNING
-          </h3>
-          <div className={styles.resumeEducation}>
-            <p className={styles.resumeText}>
-              <strong>Self-Taught Developer</strong> - Intensive self-directed learning since elementary school
-            </p>
-            <p className={styles.resumeText}>
-              • Leveraged AI-assisted learning to rapidly expand skill set across multiple domains
-            </p>
-            <p className={styles.resumeText}>
-              • Focused on practical, project-based learning with real-world applications
-            </p>
-            <p className={styles.resumeText}>
-              • Continuous learning through hackathons, open-source contributions, and production projects
-            </p>
-          </div>
-        </div>
-
         {/* Notable Achievements */}
         <div className={styles.resumeSection}>
           <h3 className={styles.resumeSectionTitle}>
-            <span className={styles.prompt}>{'>'}</span> NOTABLE ACHIEVEMENTS
+            <span className={styles.prompt}>{'>'}</span> HIGHLIGHTS
           </h3>
           <ul className={styles.resumeAchievements}>
-            <li>3rd Place Winner - ETH Warsaw 2025 Hackathon</li>
-            <li>Launched production medical training platform serving students across Poland</li>
-            <li>Built and deployed multiple Web3 dApps on EVM-compatible blockchains</li>
-            <li>Developed AI-powered platforms with real-time assessment and analytics</li>
-            <li>Active contributor to open-source Web3 and blockchain projects</li>
+            <li>3rd Place - ETH Warsaw 2025 Hackathon (Web3 mentorship platform)</li>
+            <li>Founded Protokół 999 - Production medical training platform (protokol999.pl)</li>
+            <li>Built multiple Web3 dApps with smart contracts on Base & EVM chains</li>
           </ul>
         </div>
 
-        {/* Footer Note */}
-        <div className={styles.resumeFooter}>
-          <p className={styles.resumeNote}>
-            <span className={styles.prompt}>{'>'}</span> For detailed project information and code samples,
-            visit the Projects section or check my GitHub profile.
+        {/* Education */}
+        <div className={styles.resumeSection}>
+          <h3 className={styles.resumeSectionTitle}>
+            <span className={styles.prompt}>{'>'}</span> EDUCATION
+          </h3>
+          <p className={styles.resumeText}>
+            Self-taught developer • Intensive project-based learning since elementary school • Active in hackathons & open-source
           </p>
         </div>
       </div>
