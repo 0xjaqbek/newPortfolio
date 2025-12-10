@@ -165,7 +165,7 @@ export default function Projects() {
                   >
                     {'>'} {expandedProject === project.id ? 'Hide Details' : 'View Details'}
                   </button>
-                  {project.id === 'protokol999' ? (
+                  {project.id === 'README' ? (
                     <button
                       onClick={handleGalleryClick}
                       className={styles.projectLink}
