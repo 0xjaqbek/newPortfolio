@@ -4,37 +4,55 @@ import { useEffect, useState } from 'react';
 import { GitHubRepo } from '@/lib/github/repos';
 import styles from './StaticPortfolio.module.css';
 
+interface PrivateProject {
+  id: string;
+  title: string;
+  description: string;
+  content: string;
+  filename: string;
+}
+
 export default function Projects() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [privateProjects, setPrivateProjects] = useState<PrivateProject[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [expandedProject, setExpandedProject] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/github/repos')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.repos) {
-          // Filter repos with "portfolio" or "featured" topic, or show top repos by stars
-          const featuredRepos = data.repos.filter((repo: GitHubRepo) =>
+    // Fetch both GitHub repos and private projects
+    Promise.all([
+      fetch('/api/github/repos').then(res => res.json()),
+      fetch('/api/projects/private').then(res => res.json())
+    ])
+      .then(([githubData, privateData]) => {
+        // Handle GitHub repos
+        if (githubData.repos) {
+          const featuredRepos = githubData.repos.filter((repo: GitHubRepo) =>
             repo.topics.some((topic) =>
               ['portfolio', 'featured', 'showcase'].includes(topic.toLowerCase())
             )
           );
 
-          // If no featured repos, show top 6 by stars/updated
           const displayRepos =
             featuredRepos.length > 0
               ? featuredRepos
-              : data.repos
+              : githubData.repos
                   .filter((repo: GitHubRepo) => !repo.name.includes('.'))
                   .slice(0, 6);
 
           setRepos(displayRepos);
         }
+
+        // Handle private projects
+        if (privateData.projects) {
+          setPrivateProjects(privateData.projects);
+        }
+
         setLoading(false);
       })
       .catch((err) => {
-        console.error('Failed to load GitHub repos:', err);
+        console.error('Failed to load projects:', err);
         setError('Failed to load projects');
         setLoading(false);
       });
@@ -63,12 +81,43 @@ export default function Projects() {
         <span className={styles.prompt}>$</span> ls -la projects/
       </h2>
       <div className={styles.content}>
-        {repos.length === 0 ? (
+        {repos.length === 0 && privateProjects.length === 0 ? (
           <p className={styles.noData}>
             No projects found. Add "portfolio", "featured", or "showcase" topics to your GitHub repos to display them here.
           </p>
         ) : (
           <div className={styles.projectGrid}>
+            {/* Private Projects */}
+            {privateProjects.map((project) => (
+              <div key={project.id} className={styles.projectCard}>
+                <h3 className={styles.projectName}>
+                  <span className={styles.bracket}>{'['}</span>
+                  {project.title}
+                  <span className={styles.bracket}>{']'}</span>
+                  <span className={styles.privateTag}> [PRIVATE]</span>
+                </h3>
+                <p className={styles.projectDescription}>
+                  {project.description}
+                </p>
+                <div className={styles.projectLinks}>
+                  <button
+                    onClick={() => setExpandedProject(
+                      expandedProject === project.id ? null : project.id
+                    )}
+                    className={styles.projectLink}
+                  >
+                    {'>'} {expandedProject === project.id ? 'Hide Details' : 'View Details'}
+                  </button>
+                </div>
+                {expandedProject === project.id && (
+                  <div className={styles.projectReadme}>
+                    <pre className={styles.readmeContent}>{project.content}</pre>
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* GitHub Projects */}
             {repos.map((repo) => (
               <div key={repo.id} className={styles.projectCard}>
                 <h3 className={styles.projectName}>
