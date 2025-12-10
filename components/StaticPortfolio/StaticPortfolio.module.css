@@ -302,6 +302,199 @@
   border: none;
 }
 
+/* Resume styles */
+.resumeHeader {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.resumeName {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-primary);
+}
+
+.resumeTitle {
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.resumeLocation {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.resumeContact {
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.separator {
+  color: var(--color-secondary);
+}
+
+.resumeSection {
+  margin-bottom: var(--spacing-xl);
+}
+
+.resumeSectionTitle {
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.resumeText {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.8;
+}
+
+.resumeSkills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.resumeSkillCategory {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  line-height: 1.8;
+}
+
+.resumeSkillLabel {
+  color: var(--color-secondary);
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.resumeSkillList {
+  flex: 1;
+}
+
+.resumeExperience {
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-md);
+  border-left: 2px solid var(--color-primary);
+  position: relative;
+}
+
+.resumeExperience::before {
+  content: '>';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  color: var(--color-primary);
+  background: var(--color-background);
+}
+
+.resumeExpHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-xs);
+}
+
+.resumeExpTitle {
+  font-size: 1.15rem;
+  font-weight: normal;
+  color: var(--color-primary);
+}
+
+.resumeExpDuration {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  font-style: italic;
+}
+
+.resumeExpCompany {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  color: var(--color-secondary);
+}
+
+.resumeExpPeriod {
+  font-size: 0.85rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.resumeExpDescription {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.7;
+}
+
+.resumeExpAchievements {
+  list-style: none;
+  margin: var(--spacing-sm) 0;
+}
+
+.resumeExpAchievements li {
+  padding-left: var(--spacing-md);
+  position: relative;
+  margin-bottom: var(--spacing-xs);
+}
+
+.resumeExpAchievements li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+}
+
+.resumeExpTech {
+  margin-top: var(--spacing-sm);
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+}
+
+.resumeEducation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.resumeAchievements {
+  list-style: none;
+  margin: 0;
+}
+
+.resumeAchievements li {
+  padding-left: var(--spacing-md);
+  position: relative;
+  margin-bottom: var(--spacing-sm);
+}
+
+.resumeAchievements li::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+.resumeFooter {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-secondary);
+}
+
+.resumeNote {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  font-style: italic;
+}
+
 /* Contact styles */
 .contactGrid {
   display: flex;

@@ -9,11 +9,12 @@ import Skills from '@/components/StaticPortfolio/Skills';
 import Experience from '@/components/StaticPortfolio/Experience';
 import Projects from '@/components/StaticPortfolio/Projects';
 import Contact from '@/components/StaticPortfolio/Contact';
+import Resume from '@/components/StaticPortfolio/Resume';
 import ChatWindow from '@/components/AIChat/ChatWindow';
 import SettingsMenu from '@/components/Settings/SettingsMenu';
 import styles from './page.module.css';
 
-type Section = 'about' | 'skills' | 'experience' | 'projects' | 'contact' | 'chat';
+type Section = 'about' | 'skills' | 'experience' | 'projects' | 'contact' | 'resume' | 'chat';
 
 export default function Home() {
   const { theme } = useTheme();
@@ -41,6 +42,8 @@ export default function Home() {
         return <Projects />;
       case 'contact':
         return <Contact />;
+      case 'resume':
+        return <Resume />;
       case 'chat':
         return <ChatWindow />;
       default:
@@ -127,6 +130,12 @@ export default function Home() {
                   [ CONTACT ]
                 </button>
                 <button
+                  onClick={() => handleSectionChange('resume')}
+                  className={`${styles.mobileNavLink} ${activeSection === 'resume' ? styles.navLinkActive : ''}`}
+                >
+                  [ CV / RESUME ]
+                </button>
+                <button
                   onClick={() => handleSectionChange('chat')}
                   className={`${styles.mobileNavLink} ${activeSection === 'chat' ? styles.navLinkActive : ''}`}
                 >
@@ -180,6 +189,12 @@ export default function Home() {
                 className={`${styles.navLink} ${activeSection === 'contact' ? styles.navLinkActive : ''}`}
               >
                 [ CONTACT ]
+              </button>
+              <button
+                onClick={() => setActiveSection('resume')}
+                className={`${styles.navLink} ${activeSection === 'resume' ? styles.navLinkActive : ''}`}
+              >
+                [ CV / RESUME ]
               </button>
               <button
                 onClick={() => setActiveSection('chat')}
