@@ -54,11 +54,53 @@ export default function Skills() {
 
         <div className={styles.skillCategory}>
           <h3 className={styles.skillTitle}>
+            <span className={styles.bracket}>{'['}</span>Blockchain
+            <span className={styles.bracket}>{']'}</span>
+          </h3>
+          <div className={styles.skillList}>
+            {profile.skills.blockchain.map((skill) => (
+              <span key={skill} className={styles.skillTag}>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.skillCategory}>
+          <h3 className={styles.skillTitle}>
+            <span className={styles.bracket}>{'['}</span>AI/ML
+            <span className={styles.bracket}>{']'}</span>
+          </h3>
+          <div className={styles.skillList}>
+            {profile.skills['ai-ml'].map((skill) => (
+              <span key={skill} className={styles.skillTag}>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.skillCategory}>
+          <h3 className={styles.skillTitle}>
             <span className={styles.bracket}>{'['}</span>Tools
             <span className={styles.bracket}>{']'}</span>
           </h3>
           <div className={styles.skillList}>
             {profile.skills.tools.map((skill) => (
+              <span key={skill} className={styles.skillTag}>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.skillCategory}>
+          <h3 className={styles.skillTitle}>
+            <span className={styles.bracket}>{'['}</span>Databases
+            <span className={styles.bracket}>{']'}</span>
+          </h3>
+          <div className={styles.skillList}>
+            {profile.skills.databases.map((skill) => (
               <span key={skill} className={styles.skillTag}>
                 {skill}
               </span>
