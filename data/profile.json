@@ -1,8 +1,8 @@
 {
   "name": "Jakub Skwierawski",
-  "title": "Full Stack Developer | Blockchain/AI Enthusiast",
-  "bio": "Passionate developer focused on building innovative solutions.",
-  "location": "Kaszuby Pomorskie voivodeship",
+  "title": "Full Stack Developer | Web3 & AI Solutions Architect",
+  "bio": "Passionate self-taught developer specializing in full-stack web applications, blockchain solutions, and AI-powered platforms. With an intense focus on web3 development and emerging technologies, I build innovative products that bridge traditional software with decentralized systems. My journey began with coding in elementary school and intensified over the past three years into professional-grade development. I leverage AI to rapidly expand my skill set while maintaining deep technical expertise in smart contracts, dApps, and complex web applications. Recent achievements include winning 3rd place at ETH Warsaw 2025 and launching a production medical training platform. Always eager to take on new challenges and push the boundaries of what's possible with modern technology.",
+  "location": "Kaszuby, Pomorskie voivodeship, Poland",
 
   "contact": {
     "email": "jaqbek.eth@gmail.com",
@@ -11,52 +11,77 @@
   },
 
   "skills": {
-    "languages": ["JavaScript", "TypeScript", "Python", "Solidity"],
-    "frameworks": ["React", "Next.js", "Node.js", "Express"],
-    "tools": ["Git", "Docker", "PostgreSQL", "MongoDB"],
-    "other": ["Web3", "Smart Contracts", "REST APIs", "GraphQL"]
+    "languages": ["TypeScript", "JavaScript", "Solidity", "Python", "HTML", "CSS"],
+    "frameworks": ["Next.js", "React", "Node.js", "Express", "Vite", "Tailwind CSS"],
+    "blockchain": ["Solidity", "Smart Contracts", "OnchainKit", "Base", "EVM Chains", "Web3.js", "Ethers.js"],
+    "ai-ml": ["OpenAI API", "DeepSeek", "AI Integration", "LangChain"],
+    "tools": ["Git", "GitHub", "Heroku", "Firebase", "Docker", "SCSS"],
+    "databases": ["MongoDB", "Firebase", "PostgreSQL", "NoSQL"],
+    "other": ["REST APIs", "GraphQL", "WebSockets", "Telegram Bots", "dApp Development"]
   },
 
   "experience": [
     {
       "id": "exp-1",
-      "title": "Senior Developer",
-      "company": "Company Name",
+      "title": "Founder & Lead Developer",
+      "company": "Protokół 999",
+      "location": "Remote",
+      "period": {
+        "start": "2025-12",
+        "end": "Present"
+      },
+      "description": "Founded and developed an AI-powered medical emergency training platform for paramedic students and healthcare professionals. The platform provides realistic medical scenarios with intelligent assessment and progress tracking.",
+      "achievements": [
+        "Launched production platform serving medical students across Poland (protokol999.pl)",
+        "Built advanced AI-powered scenario engine with real-time feedback",
+        "Implemented comprehensive analytics and progress tracking system",
+        "Aligned all content with ERC 2021 Guidelines for clinical accuracy",
+        "Created professional scenario builder for medical instructors",
+        "Achieved 24/7 cloud-based accessibility for flexible learning"
+      ],
+      "technologies": ["Next.js", "TypeScript", "React", "AI Integration", "Node.js", "Firebase"]
+    },
+    {
+      "id": "exp-2",
+      "title": "Co-Founder & Full Stack Developer",
+      "company": "34us (Web3 Onboarder) - ETH Warsaw 2025",
+      "location": "Hackathon Project",
+      "period": {
+        "start": "2025-09",
+        "end": "2025-09"
+      },
+      "description": "Built award-winning Web3 mentorship platform connecting crypto newcomers with experienced mentors through AI-powered matching, video calls, and blockchain-secured payments. Secured 3rd place at ETH Warsaw 2025 hackathon.",
+      "achievements": [
+        "Won 3rd place at ETH Warsaw 2025 hackathon",
+        "Developed AI-powered mentor-mentee matching algorithm",
+        "Implemented escrow smart contracts on Base blockchain",
+        "Integrated RedStone price feeds for multi-currency pricing",
+        "Built video call system with AI transcript analysis",
+        "Created Golem DB integration for decentralized data storage",
+        "Deployed on Base Sepolia testnet with OnchainKit"
+      ],
+      "technologies": ["Next.js 15.3", "Solidity", "Base", "OnchainKit", "RedStone", "Golem DB", "AI Integration"]
+    },
+    {
+      "id": "exp-3",
+      "title": "Self-Employed Developer",
+      "company": "Freelance & Open Source",
       "location": "Remote",
       "period": {
         "start": "2022-01",
         "end": "Present"
       },
-      "description": "Leading development of...",
+      "description": "Building web applications, smart contracts, Telegram bots, and Web3 solutions. Specializing in full-stack development with focus on modern frameworks and blockchain technology.",
       "achievements": [
-        "Achievement 1",
-        "Achievement 2"
+        "Developed multiple dApps and smart contracts for EVM-compatible chains",
+        "Created custom Telegram bots and automation tools",
+        "Built responsive web applications using modern frameworks",
+        "Contributed to open-source Web3 projects",
+        "Rapid skill acquisition through AI-assisted learning"
       ],
-      "technologies": ["React", "Node.js", "TypeScript"]
+      "technologies": ["React", "Next.js", "TypeScript", "Solidity", "Node.js", "Tailwind CSS", "Firebase", "Web3"]
     }
   ],
 
-  "projects": [
-    {
-      "id": "proj-1",
-      "name": "Project Name",
-      "description": "Brief description of the project",
-      "repoUrl": "https://github.com/0xjaqbek/repo-name",
-      "technologies": ["React", "TypeScript", "Next.js"],
-      "highlights": [
-        "Key feature 1",
-        "Key feature 2"
-      ],
-      "demo": "https://demo-url.com",
-      "featured": true
-    },
-    {
-      "id": "proj-2",
-      "name": "Private Project",
-      "description": "Description of private project",
-      "readmePath": "data/private-readmes/project-name.md",
-      "technologies": ["Node.js", "Express", "MongoDB"],
-      "featured": true
-    }
-  ]
+  "projects": []
 }
