@@ -10,6 +10,7 @@ interface PrivateProject {
   description: string;
   content: string;
   filename: string;
+  demoUrl?: string;
 }
 
 export default function Projects() {
@@ -147,6 +148,16 @@ export default function Projects() {
                   >
                     {'>'} {expandedProject === project.id ? 'Hide Details' : 'View Details'}
                   </button>
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.projectLink}
+                    >
+                      {'>'} Live Demo
+                    </a>
+                  )}
                 </div>
                 {expandedProject === project.id && (
                   <div className={styles.projectReadme}>

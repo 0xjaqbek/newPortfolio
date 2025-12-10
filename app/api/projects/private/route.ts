@@ -10,6 +10,7 @@ interface PrivateProject {
   description: string;
   content: string;
   filename: string;
+  demoUrl?: string;
 }
 
 export async function GET() {
@@ -39,12 +40,19 @@ export async function GET() {
                         content.match(/^(?!#|>|\[|\!|\s*$)(.+)$/m);
       const description = descMatch ? descMatch[1].replace(/\*\*/g, '').trim() : 'Private project documentation';
 
+      // Extract demo URL (look for common patterns)
+      const urlMatch = content.match(/(?:Live URL|Demo|Website|URL):\s*(https?:\/\/[^\s\)]+)/i) ||
+                       content.match(/\[.*?\]\((https?:\/\/[^\s\)]+)\)/) ||
+                       content.match(/(https?:\/\/[^\s\)]+\.(?:pl|com|app|io|dev|net|org)(?:\/[^\s\)]*)?)/);
+      const demoUrl = urlMatch ? urlMatch[1] : undefined;
+
       return {
         id: filename.replace('.md', ''),
         title,
         description,
         content,
         filename,
+        demoUrl,
       };
     });
 

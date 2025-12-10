@@ -17,7 +17,8 @@
       "mcp__ide__getDiagnostics",
       "Bash(git push:*)",
       "Bash(heroku config:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(heroku restart:*)"
     ],
     "deny": [],
     "ask": []
