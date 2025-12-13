@@ -246,6 +246,9 @@ export class SecurityAuditService {
    * Log Level 1 panel access
    */
   async logLevel1Access(sessionId: string, ipAddress: string, userAgent?: string): Promise<void> {
+    // Ensure session exists first
+    await this.ensureSession({ sessionId, ipAddress, userAgent });
+
     await this.logEvent({
       sessionId,
       ipAddress,
@@ -273,6 +276,9 @@ export class SecurityAuditService {
    * Log Level 2 panel access
    */
   async logLevel2Access(sessionId: string, ipAddress: string, userAgent?: string): Promise<void> {
+    // Ensure session exists first
+    await this.ensureSession({ sessionId, ipAddress, userAgent });
+
     await this.logEvent({
       sessionId,
       ipAddress,
