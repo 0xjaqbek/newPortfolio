@@ -156,6 +156,16 @@ export default function Level2Panel() {
             This area is restricted to authorized personnel only.
           </p>
 
+          {!showAuthModal && (
+            <button
+              onClick={() => setShowAuthModal(true)}
+              className={styles.btnPrimary}
+              style={{ marginTop: '2rem' }}
+            >
+              🔑 Authenticate
+            </button>
+          )}
+
           {showAuthModal && (
             <div className={styles.modal}>
               <div className={styles.modalContent}>
