@@ -21,7 +21,8 @@ export default function ConsoleEasterEgg() {
       const heightThreshold = window.outerHeight - window.innerHeight > threshold;
       const orientation = widthThreshold ? 'vertical' : 'horizontal';
 
-      if (!(heightThreshold && widthThreshold) && ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)) {
+      const windowAny = window as any;
+      if (!(heightThreshold && widthThreshold) && ((windowAny.Firebug && windowAny.Firebug.chrome && windowAny.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)) {
         if (!consoleOpened) {
           consoleOpened = true;
           setTimeout(showPrompt, delay);
