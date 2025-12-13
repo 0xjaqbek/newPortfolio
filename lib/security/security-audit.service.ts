@@ -213,6 +213,9 @@ export class SecurityAuditService {
    * Log console access (Level 1 easter egg)
    */
   async logConsoleAccess(sessionId: string, ipAddress: string, userAgent?: string): Promise<void> {
+    // Ensure session exists first
+    await this.ensureSession({ sessionId, ipAddress, userAgent });
+
     await this.logEvent({
       sessionId,
       ipAddress,
@@ -221,9 +224,6 @@ export class SecurityAuditService {
       severity: 'LOW',
       details: { type: 'easter_egg_discovery' },
     });
-
-    // Update easter egg progress
-    await this.ensureSession({ sessionId, ipAddress, userAgent });
 
     await prisma.easterEggProgress.upsert({
       where: { sessionId },
