@@ -1,0 +1,132 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Chat session tracking (by IP + session ID instead of user auth)
+model ChatSession {
+  id            String   @id @default(uuid())
+  sessionId     String   @unique
+  ipAddress     String
+  userAgent     String?
+  firstSeen     DateTime @default(now())
+  lastSeen      DateTime @updatedAt
+  messageCount  Int      @default(0)
+
+  messages      ChatMessage[]
+  securityLogs  SecurityAuditLog[]
+  suspension    SessionSuspension?
+  easterEgg     EasterEggProgress?
+
+  @@index([ipAddress])
+  @@index([sessionId])
+  @@map("chat_sessions")
+}
+
+// Individual chat messages
+model ChatMessage {
+  id          String      @id @default(uuid())
+  sessionId   String
+  session     ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role        String      // 'user' | 'assistant'
+  content     String      @db.Text
+  timestamp   DateTime    @default(now())
+
+  sanitized   Boolean     @default(false)
+  flagged     Boolean     @default(false)
+
+  @@index([sessionId, timestamp])
+  @@map("chat_messages")
+}
+
+// Security audit logs - ALL security events
+model SecurityAuditLog {
+  id            String      @id @default(uuid())
+  sessionId     String
+  session       ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  activityType  String      // 'PROMPT_INJECTION_ATTEMPT', 'RATE_LIMIT_EXCEEDED', 'CONSOLE_ACCESS', etc.
+  severity      String      // 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'
+  details       Json
+
+  ipAddress     String
+  userAgent     String?
+  timestamp     DateTime    @default(now())
+
+  @@index([activityType, timestamp])
+  @@index([sessionId])
+  @@index([ipAddress])
+  @@map("security_audit_logs")
+}
+
+// Session suspensions (48h bans)
+model SessionSuspension {
+  id          String      @id @default(uuid())
+  sessionId   String      @unique
+  session     ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  reason      String
+  suspendedAt DateTime    @default(now())
+  expiresAt   DateTime?
+  isPermanent Boolean     @default(false)
+  isActive    Boolean     @default(true)
+
+  suspendedBy String?     // 'SYSTEM' | 'ADMIN'
+
+  @@index([isActive, expiresAt])
+  @@map("session_suspensions")
+}
+
+// IP blocking
+model IpBlock {
+  id          String    @id @default(uuid())
+  ipAddress   String    @unique
+  reason      String
+  blockedAt   DateTime  @default(now())
+  expiresAt   DateTime?
+  isPermanent Boolean   @default(false)
+  isActive    Boolean   @default(true)
+
+  blockedBy   String?   // 'SYSTEM' | 'ADMIN'
+
+  @@index([ipAddress, isActive])
+  @@map("ip_blocks")
+}
+
+// Easter egg progress tracking
+model EasterEggProgress {
+  id              String      @id @default(uuid())
+  sessionId       String      @unique
+  session         ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  level1Unlocked  Boolean     @default(false)
+  level1At        DateTime?
+  level2Unlocked  Boolean     @default(false)
+  level2At        DateTime?
+
+  consoleOpened   Boolean     @default(false)
+  consoleAt       DateTime?
+
+  @@map("easter_egg_progress")
+}
+
+// Statistics for Level 1 panel
+model PanelStatistics {
+  id                    String   @id @default(uuid())
+  totalDiscoveries      Int      @default(0)
+  firstDiscovery        DateTime?
+  lastDiscovery         DateTime?
+  totalInjectionAttempts Int     @default(0)
+  totalBlockedSessions  Int      @default(0)
+  activeBlocks          Int      @default(0)
+  updatedAt             DateTime @updatedAt
+
+  @@map("panel_statistics")
+}

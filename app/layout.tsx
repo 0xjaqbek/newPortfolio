@@ -6,6 +6,7 @@ import '@/styles/effects/glow.css';
 import '@/styles/effects/chromatic-aberration.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { ChatProvider } from '@/context/ChatContext';
+import ConsoleEasterEgg from '@/components/ConsoleEasterEgg';
 
 export const metadata: Metadata = {
   title: 'Jakub Skwierawski | Developer Portfolio',
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <ChatProvider>
+            <ConsoleEasterEgg />
             {children}
           </ChatProvider>
         </ThemeProvider>

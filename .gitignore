@@ -45,3 +45,5 @@ next-env.d.ts
 
 # Local data (optional - uncomment if you want to keep private READMEs in git)
 # data/private-readmes/
+
+/lib/generated/prisma
