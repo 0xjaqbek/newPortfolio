@@ -47,3 +47,25 @@ next-env.d.ts
 # data/private-readmes/
 
 /lib/generated/prisma
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+*.egg-info/
+dist-info/
+build/
+*.egg
+
+# Python RAG Service
+python-rag-service/embeddings/
+python-rag-service/data/
+python-rag-service/*.db
+python-rag-service/*.sqlite
+python-rag-service/.env

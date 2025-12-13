@@ -44,7 +44,13 @@
       "Bash(ENABLE_EASTER_EGG=true )",
       "Bash(npm uninstall:*)",
       "Bash(taskkill:*)",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(heroku run:*)",
+      "Bash(heroku logs:*)",
+      "Bash(grep:*)",
+      "Bash(heroku ps:*)",
+      "Bash(dir:*)",
+      "Bash(python -m venv:*)"
     ],
     "deny": [],
     "ask": []

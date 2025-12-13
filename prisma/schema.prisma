@@ -16,6 +16,7 @@ model ChatSession {
   sessionId     String   @unique
   ipAddress     String
   userAgent     String?
+  aiProvider    String   @default("deepseek") // 'deepseek' | 'rag-assistant'
   firstSeen     DateTime @default(now())
   lastSeen      DateTime @updatedAt
   messageCount  Int      @default(0)
@@ -37,12 +38,14 @@ model ChatMessage {
   session     ChatSession @relation(fields: [sessionId], references: [sessionId], onDelete: Cascade)
   role        String      // 'user' | 'assistant'
   content     String      @db.Text
+  aiProvider  String      @default("deepseek") // 'deepseek' | 'rag-assistant'
   timestamp   DateTime    @default(now())
 
   sanitized   Boolean     @default(false)
   flagged     Boolean     @default(false)
 
   @@index([sessionId, timestamp])
+  @@index([aiProvider])
   @@map("chat_messages")
 }
 

@@ -4,6 +4,8 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 
 export type ColorScheme = 'green-phosphor' | 'amber' | 'monochrome' | 'matrix' | 'custom';
 
+export type AIProvider = 'deepseek' | 'rag-assistant';
+
 export interface ThemeSettings {
   colorScheme: ColorScheme;
   customColors?: {
@@ -18,6 +20,7 @@ export interface ThemeSettings {
     chromaticAberration: boolean;
   };
   showBootSequence: boolean;
+  aiProvider: AIProvider;
 }
 
 interface ThemeContextType {
@@ -35,6 +38,7 @@ const defaultTheme: ThemeSettings = {
     chromaticAberration: false,
   },
   showBootSequence: true,
+  aiProvider: 'deepseek',
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

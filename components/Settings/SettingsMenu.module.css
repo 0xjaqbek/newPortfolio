@@ -101,6 +101,14 @@
   box-shadow: 0 0 10px var(--color-glow);
 }
 
+.hint {
+  margin-top: var(--spacing-sm);
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  opacity: 0.8;
+  font-style: italic;
+}
+
 .toggleList {
   display: flex;
   flex-direction: column;

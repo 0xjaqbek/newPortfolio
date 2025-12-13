@@ -102,6 +102,33 @@ export default function SettingsMenu({ onClose }: SettingsMenuProps) {
         </div>
 
         <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>AI Chatbot</h3>
+          <div className={styles.optionGrid}>
+            <button
+              className={`${styles.option} ${
+                theme.aiProvider === 'deepseek' ? styles.active : ''
+              }`}
+              onClick={() => updateTheme({ aiProvider: 'deepseek' })}
+            >
+              DeepSeek Direct
+            </button>
+            <button
+              className={`${styles.option} ${
+                theme.aiProvider === 'rag-assistant' ? styles.active : ''
+              }`}
+              onClick={() => updateTheme({ aiProvider: 'rag-assistant' })}
+            >
+              RAG Assistant
+            </button>
+          </div>
+          <p className={styles.hint}>
+            {theme.aiProvider === 'deepseek'
+              ? 'Using direct DeepSeek API connection'
+              : 'Using RAG with semantic search across portfolio, docs, and security logs'}
+          </p>
+        </div>
+
+        <div className={styles.section}>
           <h3 className={styles.sectionTitle}>Other Settings</h3>
           <div className={styles.toggleList}>
             <label className={styles.toggle}>

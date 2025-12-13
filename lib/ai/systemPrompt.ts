@@ -41,19 +41,22 @@ ${profile.experience
   )
   .join('\n')}
 
-### Featured Projects
-${profile.projects
-  .filter((p) => p.featured)
-  .map(
-    (proj) => `
-- ${proj.name}
+### Projects
+${profile.projects && profile.projects.length > 0
+  ? profile.projects
+      .map(
+        (proj: any) => `
+- ${proj.name} (${proj.status || 'N/A'})
   ${proj.description}
+  ${proj.features && proj.features.length > 0 ? `Features: ${proj.features.slice(0, 5).join(', ')}${proj.features.length > 5 ? ', and more' : ''}` : ''}
+  ${proj.highlights && proj.highlights.length > 0 ? `Highlights: ${proj.highlights.slice(0, 3).join('; ')}` : ''}
   Technologies: ${proj.technologies.join(', ')}
-  ${proj.repoUrl ? `GitHub: ${proj.repoUrl}` : ''}
-  ${proj.demo ? `Demo: ${proj.demo}` : ''}
+  ${proj.url ? `URL: ${proj.url}` : ''}
+  ${proj.github && proj.github !== 'private' ? `GitHub: ${proj.github}` : ''}
 `
-  )
-  .join('\n')}
+      )
+      .join('\n')
+  : 'No projects listed yet.'}
 `
     : 'Profile information not available.';
 

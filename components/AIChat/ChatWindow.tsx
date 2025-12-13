@@ -1,12 +1,14 @@
 'use client';
 
 import { useChat } from '@/context/ChatContext';
+import { useTheme } from '@/context/ThemeContext';
 import { useState, useRef, useEffect } from 'react';
 import MessageBubble from './MessageBubble';
 import styles from './ChatWindow.module.css';
 
 export default function ChatWindow() {
   const { messages, addMessage, clearMessages, isLoading, setIsLoading } = useChat();
+  const { theme } = useTheme();
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -29,7 +31,10 @@ export default function ChatWindow() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      // Determine which API endpoint to use based on AI provider setting
+      const endpoint = theme.aiProvider === 'rag-assistant' ? '/api/chat-rag' : '/api/chat';
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -59,6 +64,9 @@ export default function ChatWindow() {
       <div className={styles.header}>
         <h3 className={styles.title}>
           <span className={styles.prompt}>$</span> ai-chat.sh
+          <span className={styles.provider}>
+            [{theme.aiProvider === 'rag-assistant' ? 'RAG' : 'Direct'}]
+          </span>
         </h3>
         {messages.length > 0 && (
           <button
@@ -81,6 +89,19 @@ export default function ChatWindow() {
               Ask me about Jakub's skills, projects, or discuss potential
               collaborations.
             </p>
+            <div className={styles.aiInfo}>
+              <p className={styles.aiInfoTitle}>
+                <span className={styles.prompt}>{'>'}</span> AI Mode: {theme.aiProvider === 'rag-assistant' ? 'RAG Assistant' : 'DeepSeek Direct'}
+              </p>
+              <p className={styles.aiInfoText}>
+                {theme.aiProvider === 'rag-assistant'
+                  ? '📚 Using semantic search across portfolio, documentation, and security logs for context-aware responses'
+                  : '⚡ Fast direct API responses'}
+              </p>
+              <p className={styles.aiInfoText}>
+                💡 Switch AI modes in Settings [⚙]
+              </p>
+            </div>
             <p className={styles.welcomeText}>
               You can also browse other sections using the menu [≡].
             </p>
