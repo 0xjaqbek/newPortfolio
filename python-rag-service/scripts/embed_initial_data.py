@@ -212,10 +212,25 @@ Technologies: {', '.join(proj.get('technologies', []))}
     documents = [doc["content"].strip() for doc in portfolio_docs]
     metadatas = [doc["metadata"] for doc in portfolio_docs]
 
+    # Generate unique IDs based on metadata to prevent duplicates
+    ids = []
+    for meta in metadatas:
+        if meta["type"] == "profile":
+            ids.append("profile_jakub_skwierawski")
+        elif meta["type"] == "skills":
+            ids.append("skills_jakub_skwierawski")
+        elif meta["type"] == "experience":
+            ids.append(f"exp_{meta.get('company', 'unknown').replace(' ', '_').lower()}")
+        elif meta["type"] == "project":
+            ids.append(f"proj_{meta.get('project_name', 'unknown').replace(' ', '_').lower()}")
+        else:
+            ids.append(f"{meta['type']}_{len(ids)}")
+
     success = chroma_service.add_documents(
         collection_name="portfolio",
         documents=documents,
         metadatas=metadatas,
+        ids=ids,
     )
 
     if success:
@@ -317,10 +332,18 @@ In the Interactive Portfolio project:
     documents = [doc["content"].strip() for doc in docs]
     metadatas = [doc["metadata"] for doc in docs]
 
+    # Generate unique IDs based on topic to prevent duplicates
+    ids = []
+    for meta in metadatas:
+        topic = meta.get("topic", "unknown").lower().replace(" ", "_")
+        doc_type = meta.get("type", "doc")
+        ids.append(f"doc_{doc_type}_{topic}")
+
     success = chroma_service.add_documents(
         collection_name="documentation",
         documents=documents,
         metadatas=metadatas,
+        ids=ids,
     )
 
     if success:
