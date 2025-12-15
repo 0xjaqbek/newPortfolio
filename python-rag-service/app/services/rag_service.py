@@ -2,6 +2,7 @@ from typing import List, Dict, Any, Optional
 from app.services.chroma_service import chroma_service
 from app.services.deepseek_service import deepseek_service
 from app.services.database_service import db_service
+from datetime import datetime
 import logging
 
 logger = logging.getLogger(__name__)
@@ -14,6 +15,126 @@ class RAGService:
         self.chroma = chroma_service
         self.deepseek = deepseek_service
         self.db = db_service
+
+    def _detect_temporal_query(self, query: str) -> Optional[Dict[str, str]]:
+        """
+        Detect if query involves chronological/temporal aspects.
+
+        Args:
+            query: User query text
+
+        Returns:
+            Dict with 'type' (earliest/latest) and 'field' (created_at/first_commit/last_commit)
+            or None if not temporal
+        """
+        query_lower = query.lower()
+
+        temporal_patterns = {
+            'earliest': ['earliest', 'first', 'oldest', 'initial', 'when did you start', 'beginning'],
+            'latest': ['latest', 'most recent', 'newest', 'last', 'current', 'recent'],
+        }
+
+        for query_type, keywords in temporal_patterns.items():
+            if any(keyword in query_lower for keyword in keywords):
+                # Determine field based on context
+                if 'commit' in query_lower or 'update' in query_lower:
+                    field = 'last_commit' if query_type == 'latest' else 'first_commit'
+                else:
+                    field = 'created_at'
+
+                logger.info(f"Detected temporal query: type={query_type}, field={field}")
+                return {
+                    'type': query_type,
+                    'field': field
+                }
+
+        return None
+
+    def _temporal_search(
+        self,
+        collection_name: str,
+        temporal_type: str,
+        date_field: str,
+        query_text: str,
+        n_results: int = 10
+    ) -> Dict[str, Any]:
+        """
+        Perform temporal search by combining metadata filtering and sorting.
+
+        Args:
+            collection_name: Collection to search
+            temporal_type: 'earliest' or 'latest'
+            date_field: Metadata field to sort by (created_at, first_commit, last_commit)
+            query_text: Original query for semantic filtering
+            n_results: Number of results to return
+
+        Returns:
+            Query results sorted chronologically
+        """
+        try:
+            # Get GitHub repositories with higher limit
+            results = self.chroma.query(
+                collection_name=collection_name,
+                query_text=query_text,
+                n_results=50,  # Get more results to ensure we have all relevant repos
+                where={"type": "github_repo"}  # Filter only GitHub repos
+            )
+
+            if not results["documents"]:
+                logger.info("No GitHub repos found in temporal search")
+                return results
+
+            # Combine results with metadata for sorting
+            combined = list(zip(
+                results["documents"],
+                results["metadatas"],
+                results["distances"],
+                results["ids"]
+            ))
+
+            # Sort by date field
+            def get_sort_key(item):
+                metadata = item[1]
+                date_str = metadata.get(date_field, "")
+
+                # Parse ISO date
+                try:
+                    if date_str:
+                        return datetime.fromisoformat(date_str.replace("Z", "+00:00"))
+                    else:
+                        # Put items without dates at the end
+                        return datetime.max if temporal_type == "earliest" else datetime.min
+                except Exception as e:
+                    logger.warning(f"Error parsing date {date_str}: {e}")
+                    return datetime.max if temporal_type == "earliest" else datetime.min
+
+            combined.sort(key=get_sort_key, reverse=(temporal_type == "latest"))
+
+            logger.info(f"Temporal search sorted {len(combined)} repos by {date_field}, order={temporal_type}")
+
+            # Take top n_results after sorting
+            combined = combined[:n_results]
+
+            # Unzip back to separate lists
+            if combined:
+                docs, metas, dists, ids = zip(*combined)
+                return {
+                    "documents": list(docs),
+                    "metadatas": list(metas),
+                    "distances": list(dists),
+                    "ids": list(ids)
+                }
+            else:
+                return {"documents": [], "metadatas": [], "distances": [], "ids": []}
+
+        except Exception as e:
+            logger.error(f"Error in temporal search: {e}")
+            # Fall back to regular search
+            return self.chroma.query(
+                collection_name=collection_name,
+                query_text=query_text,
+                n_results=n_results,
+            )
 
     async def chat(
         self,
@@ -41,16 +162,34 @@ class RAGService:
             metadata = {"sources": [], "rag_enabled": use_rag}
 
             if use_rag and last_user_message:
+                # Detect temporal queries
+                temporal_info = self._detect_temporal_query(last_user_message)
+
                 # Determine which collections to search
                 search_collections = collections or list(self.chroma.collections.keys())
 
                 # Search each collection for relevant context
                 for collection_name in search_collections:
-                    results = self.chroma.query(
-                        collection_name=collection_name,
-                        query_text=last_user_message,
-                        n_results=3,
-                    )
+                    # Use temporal search for portfolio collection if temporal query detected
+                    if temporal_info and collection_name == "portfolio":
+                        logger.info(f"Using temporal search for {collection_name}")
+                        results = self._temporal_search(
+                            collection_name=collection_name,
+                            temporal_type=temporal_info['type'],
+                            date_field=temporal_info['field'],
+                            query_text=last_user_message,
+                            n_results=10  # Get more results for temporal queries
+                        )
+                        metadata["temporal_query"] = True
+                        metadata["temporal_type"] = temporal_info['type']
+                        metadata["temporal_field"] = temporal_info['field']
+                    else:
+                        # Standard semantic search
+                        results = self.chroma.query(
+                            collection_name=collection_name,
+                            query_text=last_user_message,
+                            n_results=3,
+                        )
 
                     if results["documents"]:
                         context_parts.append(f"\n### Context from {collection_name}:")
