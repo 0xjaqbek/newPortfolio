@@ -10,6 +10,11 @@ import httpx
 import base64
 from datetime import datetime
 from typing import List, Dict, Any, Optional
+from dotenv import load_dotenv
+
+# Load .env from parent directory (newPortfolio/.env)
+env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), '.env')
+load_dotenv(env_path)
 
 # Add parent directory to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
