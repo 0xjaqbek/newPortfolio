@@ -65,7 +65,8 @@ build/
 
 # Python RAG Service
 python-rag-service/embeddings/
-python-rag-service/data/
+python-rag-service/data/*
+!python-rag-service/data/profile.json
 python-rag-service/*.db
 python-rag-service/*.sqlite
 python-rag-service/.env

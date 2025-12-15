@@ -1,0 +1,144 @@
+{
+  "name": "Jakub Skwierawski",
+  "title": "Full Stack Developer | Web3 & AI Solutions Architect",
+  "bio": "Passionate self-taught developer specializing in full-stack web applications, blockchain solutions, and AI-powered platforms. With an intense focus on web3 development and emerging technologies, I build innovative products that bridge traditional software with decentralized systems. My journey began with coding in elementary school and intensified over the past three years into professional-grade development. I leverage AI to rapidly expand my skill set while maintaining deep technical expertise in smart contracts, dApps, and complex web applications. Recent achievements include winning 3rd place at ETH Warsaw 2025 and launching a production medical training platform. Always eager to take on new challenges and push the boundaries of what's possible with modern technology.",
+  "location": "Kaszuby, Pomorskie voivodeship, Poland",
+
+  "contact": {
+    "email": "jaqbek.eth@gmail.com",
+    "twitter": "@jaqbek_eth",
+    "telegram": "@jaqbek"
+  },
+
+  "skills": {
+    "languages": ["TypeScript", "JavaScript", "Solidity", "Python", "HTML", "CSS"],
+    "frameworks": ["Next.js", "React", "Node.js", "Express", "FastAPI", "Vite", "Tailwind CSS"],
+    "blockchain": ["Solidity", "Smart Contracts", "OnchainKit", "Base", "EVM Chains", "Web3.js", "Ethers.js"],
+    "ai-ml": ["OpenAI API", "DeepSeek", "AI Integration", "LangChain", "RAG (Retrieval-Augmented Generation)", "Sentence Transformers", "Semantic Search"],
+    "tools": ["Git", "GitHub", "Heroku", "Firebase", "Docker", "SCSS", "Prisma ORM"],
+    "databases": ["MongoDB", "Firebase", "PostgreSQL", "ChromaDB", "Vector Databases", "NoSQL"],
+    "other": ["REST APIs", "GraphQL", "WebSockets", "Telegram Bots", "dApp Development", "Microservices Architecture"]
+  },
+
+  "experience": [
+    {
+      "id": "exp-1",
+      "title": "Founder & Lead Developer",
+      "company": "Protokół 999",
+      "location": "Remote",
+      "period": {
+        "start": "2025-12",
+        "end": "Present"
+      },
+      "description": "Founded and developed an AI-powered medical emergency training platform for paramedic students and healthcare professionals. The platform provides realistic medical scenarios with intelligent assessment and progress tracking.",
+      "achievements": [
+        "Launched production platform serving medical students across Poland (protokol999.pl)",
+        "Built advanced AI-powered scenario engine with real-time feedback",
+        "Implemented comprehensive analytics and progress tracking system",
+        "Aligned all content with ERC 2021 Guidelines for clinical accuracy",
+        "Created professional scenario builder for medical instructors",
+        "Achieved 24/7 cloud-based accessibility for flexible learning"
+      ],
+      "technologies": ["Next.js", "TypeScript", "React", "AI Integration", "Node.js", "Firebase"]
+    },
+    {
+      "id": "exp-2",
+      "title": "Co-Founder & Full Stack Developer",
+      "company": "34us (Web3 Onboarder) - ETH Warsaw 2025",
+      "location": "Hackathon Project",
+      "period": {
+        "start": "2025-09",
+        "end": "2025-09"
+      },
+      "description": "Built award-winning Web3 mentorship platform connecting crypto newcomers with experienced mentors through AI-powered matching, video calls, and blockchain-secured payments. Secured 3rd place at ETH Warsaw 2025 hackathon.",
+      "achievements": [
+        "Won 3rd place at ETH Warsaw 2025 hackathon",
+        "Developed AI-powered mentor-mentee matching algorithm",
+        "Implemented escrow smart contracts on Base blockchain",
+        "Integrated RedStone price feeds for multi-currency pricing",
+        "Built video call system with AI transcript analysis",
+        "Created Golem DB integration for decentralized data storage",
+        "Deployed on Base Sepolia testnet with OnchainKit"
+      ],
+      "technologies": ["Next.js 15.3", "Solidity", "Base", "OnchainKit", "RedStone", "Golem DB", "AI Integration"]
+    },
+    {
+      "id": "exp-3",
+      "title": "Self-Employed Developer",
+      "company": "Freelance & Open Source",
+      "location": "Remote",
+      "period": {
+        "start": "2022-01",
+        "end": "Present"
+      },
+      "description": "Building web applications, smart contracts, Telegram bots, AI-powered systems, and Web3 solutions. Specializing in full-stack development with focus on modern frameworks, blockchain technology, and AI/ML integrations including RAG (Retrieval-Augmented Generation) systems.",
+      "achievements": [
+        "Developed multiple dApps and smart contracts for EVM-compatible chains",
+        "Implemented RAG-powered AI systems with vector databases for semantic search",
+        "Built Python microservices with FastAPI for AI integrations",
+        "Created custom Telegram bots and automation tools",
+        "Built responsive web applications using modern frameworks",
+        "Contributed to open-source Web3 projects",
+        "Rapid skill acquisition through AI-assisted learning"
+      ],
+      "technologies": ["React", "Next.js", "TypeScript", "Solidity", "Node.js", "Python", "FastAPI", "ChromaDB", "Tailwind CSS", "Firebase", "Web3", "RAG Systems"]
+    }
+  ],
+
+  "projects": [
+    {
+      "id": "proj-1",
+      "name": "Interactive Portfolio with Guardian Security",
+      "category": "Web Application",
+      "status": "Production",
+      "url": "https://your-portfolio-url.herokuapp.com",
+      "github": "private",
+      "period": {
+        "start": "2024-11",
+        "end": "Present"
+      },
+      "description": "Advanced interactive portfolio website featuring dual AI chatbot system (DeepSeek Direct + RAG Assistant), sophisticated security framework, and retro terminal aesthetics. Built to showcase technical skills while implementing production-grade security measures, AI integrations, and semantic search capabilities using Python microservices.",
+      "features": [
+        "Dual AI chatbot system - toggle between DeepSeek Direct and RAG Assistant",
+        "RAG Assistant with ChromaDB vector database for semantic search across portfolio, documentation, and security logs",
+        "Guardian Security System with prompt injection detection and session management",
+        "Real-time security audit logging and analytics dashboard",
+        "Easter egg challenge system with multi-level security puzzles",
+        "Retro CRT terminal theme with customizable visual effects (scanlines, glow, chromatic aberration)",
+        "GitHub integration displaying live contribution data and repository information",
+        "Responsive design with mobile-optimized chat interface",
+        "PostgreSQL database with Prisma ORM for data persistence",
+        "Rate limiting, IP blocking, and session suspension capabilities"
+      ],
+      "technologies": [
+        "Next.js 14",
+        "TypeScript",
+        "React",
+        "PostgreSQL",
+        "Prisma ORM",
+        "Python",
+        "FastAPI",
+        "ChromaDB",
+        "Sentence Transformers",
+        "DeepSeek API",
+        "Docker",
+        "Heroku",
+        "CSS Modules"
+      ],
+      "highlights": [
+        "Implemented RAG (Retrieval-Augmented Generation) pipeline using Python, FastAPI, and ChromaDB vector database",
+        "Built comprehensive security system detecting and logging attack patterns with PostgreSQL",
+        "Created dual-mode AI chatbot allowing users to switch between direct API and RAG-enhanced responses",
+        "Designed modular Python microservice architecture with FastAPI for AI processing",
+        "Achieved sub-second semantic search across 5 knowledge collections using Sentence Transformers",
+        "Integrated real-time security analytics with AI-powered pattern analysis",
+        "Implemented vector embeddings and semantic similarity search for context-aware responses",
+        "Dockerized Python service for scalable deployment alongside Next.js frontend"
+      ],
+      "aiFeatures": {
+        "deepseekDirect": "Fast, direct API responses using DeepSeek LLM with system prompts",
+        "ragAssistant": "Enhanced responses using semantic search across portfolio data, documentation, security logs, and custom documents via ChromaDB vector database"
+      }
+    }
+  ]
+}

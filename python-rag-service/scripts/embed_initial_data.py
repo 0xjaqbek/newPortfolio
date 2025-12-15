@@ -71,12 +71,29 @@ def embed_portfolio_data():
     import json
 
     # Load actual profile data
-    profile_path = "../data/profile.json"
-    try:
-        with open(profile_path, 'r', encoding='utf-8') as f:
-            profile = json.load(f)
-    except FileNotFoundError:
-        logger.warning(f"Profile not found at {profile_path}, using placeholder")
+    # Try multiple possible paths
+    possible_paths = [
+        "data/profile.json",  # Railway: in python-rag-service/data/
+        "../data/profile.json",  # When run from scripts/ directory locally
+        "../../data/profile.json",  # When run from python-rag-service/ locally
+        os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "profile.json"),  # Absolute from script location
+    ]
+
+    profile = None
+    for profile_path in possible_paths:
+        try:
+            if os.path.exists(profile_path):
+                with open(profile_path, 'r', encoding='utf-8') as f:
+                    profile = json.load(f)
+                    logger.info(f"Loaded profile from: {profile_path}")
+                    break
+        except Exception as e:
+            logger.debug(f"Could not load from {profile_path}: {e}")
+            continue
+
+    if not profile:
+        logger.error("Profile not found in any expected location!")
+        logger.error(f"Tried paths: {possible_paths}")
         profile = {"name": "Jakub Skwierawski", "title": "Developer"}
 
     # Create detailed portfolio documents
