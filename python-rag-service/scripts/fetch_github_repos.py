@@ -215,48 +215,92 @@ def embed_github_repos(github_token: str):
             first_commit = timeline.get("first_commit", created_at)
             last_commit = timeline.get("last_commit", updated_at)
 
-            # Parse dates for better formatting
+            # Parse dates for better formatting and chronological context
+            try:
+                created_dt = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
+                created_at_human = created_dt.strftime("%B %d, %Y")
+                created_at_short = created_dt.strftime("%Y-%m-%d")
+
+                # Determine chronological context
+                current_year = datetime.now().year
+                repo_year = created_dt.year
+
+                if repo_year < 2024:
+                    chronological_context = f"EARLY REPOSITORY - Created in {repo_year}, one of Jakub's earliest projects"
+                elif repo_year == 2024 and created_dt.month <= 6:
+                    chronological_context = f"Created in early {repo_year}"
+                elif repo_year == 2024:
+                    chronological_context = f"Created in late {repo_year}"
+                else:
+                    chronological_context = f"Recent repository - Created in {repo_year}"
+
+                # Calculate days since creation
+                days_since_creation = (datetime.now(created_dt.tzinfo) - created_dt).days
+                if days_since_creation < 30:
+                    age_context = f"Very recent - created {days_since_creation} days ago"
+                elif days_since_creation < 180:
+                    age_context = f"Recent - created {days_since_creation // 30} months ago"
+                else:
+                    age_context = f"Created {days_since_creation // 365} year(s) and {(days_since_creation % 365) // 30} month(s) ago"
+
+            except:
+                created_at_human = created_at
+                created_at_short = created_at
+                chronological_context = "Creation date unknown"
+                age_context = ""
+
+            # Parse commit dates
             try:
                 if first_commit:
                     first_commit_dt = datetime.fromisoformat(first_commit.replace("Z", "+00:00"))
                     first_commit_formatted = first_commit_dt.strftime("%Y-%m-%d %H:%M:%S UTC")
+                    first_commit_human = first_commit_dt.strftime("%B %d, %Y")
                 else:
                     first_commit_formatted = "Unknown"
+                    first_commit_human = "Unknown"
 
                 if last_commit:
                     last_commit_dt = datetime.fromisoformat(last_commit.replace("Z", "+00:00"))
                     last_commit_formatted = last_commit_dt.strftime("%Y-%m-%d %H:%M:%S UTC")
+                    last_commit_human = last_commit_dt.strftime("%B %d, %Y")
                 else:
                     last_commit_formatted = "Unknown"
+                    last_commit_human = "Unknown"
             except:
                 first_commit_formatted = first_commit or "Unknown"
+                first_commit_human = "Unknown"
                 last_commit_formatted = last_commit or "Unknown"
+                last_commit_human = "Unknown"
 
-            # Build document content
+            # Build document content with enhanced chronological emphasis
             doc_content = f"""
 Jakub Skwierawski - GitHub Repository: {repo_name}
 
+CHRONOLOGICAL INFORMATION (IMPORTANT FOR TIMELINE QUERIES):
+- Repository Creation Date: {created_at_short} ({created_at_human})
+- Chronological Context: {chronological_context}
+- Age: {age_context}
+- First Commit: {first_commit_human} ({first_commit_formatted})
+- Last Commit: {last_commit_human} ({last_commit_formatted})
+- Last Updated: {updated_at}
+
+REPOSITORY DETAILS:
 Repository Name: {repo_name}
 Full Name: {repo.get("full_name", "")}
 Description: {repo.get("description", "No description")}
 URL: {repo.get("html_url", "")}
 
-Timeline:
-- Repository Created: {created_at}
-- First Commit: {first_commit_formatted}
-- Last Commit: {last_commit_formatted}
-- Last Updated: {updated_at}
-
+TECHNICAL INFORMATION:
 Languages: {", ".join(language_list) if language_list else "Not specified"}
 Topics/Tags: {", ".join(repo.get("topics", [])) if repo.get("topics") else "None"}
 
-Statistics:
+STATISTICS:
 - Stars: {repo.get("stargazers_count", 0)}
 - Forks: {repo.get("forks_count", 0)}
 - Watchers: {repo.get("watchers_count", 0)}
 - Open Issues: {repo.get("open_issues_count", 0)}
 
-Status:
+STATUS:
 - Private: {repo.get("private", False)}
 - Fork: {repo.get("fork", False)}
 - Archived: {repo.get("archived", False)}
