@@ -98,9 +98,6 @@ export default function ChatWindow() {
                   ? '📚 Using semantic search across portfolio, documentation, and security logs for context-aware responses'
                   : '⚡ Fast direct API responses'}
               </p>
-              <p className={styles.aiInfoText}>
-                💡 Switch AI modes in Settings [⚙]
-              </p>
             </div>
             <p className={styles.welcomeText}>
               You can also browse other sections using the menu [≡].
