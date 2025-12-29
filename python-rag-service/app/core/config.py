@@ -4,9 +4,9 @@ from typing import List
 
 class Settings(BaseSettings):
     # AI Provider (OpenAI)
-    OPENAI_API_KEY: str = ""  # Will be set via Railway environment variables
-    OPENAI_BASE_URL: str = "https://api.openai.com/v1"
-    OPENAI_MODEL: str = "gpt-4o-mini"
+    AI_PROVIDER_API_KEY: str = ""  # Will be set via Railway environment variables
+    AI_PROVIDER_BASE_URL: str = "https://api.openai.com/v1"
+    AI_PROVIDER_MODEL: str = "gpt-4o-mini"
 
     # Database
     POSTGRES_URL: str = ""  # Will be set via Railway environment variables

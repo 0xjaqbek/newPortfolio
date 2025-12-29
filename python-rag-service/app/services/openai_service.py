@@ -10,13 +10,13 @@ class OpenAIService:
     """Service for interacting with OpenAI API."""
 
     def __init__(self):
-        self.api_key = settings.OPENAI_API_KEY
-        self.base_url = settings.OPENAI_BASE_URL
-        self.model = settings.OPENAI_MODEL
+        self.api_key = settings.AI_PROVIDER_API_KEY
+        self.base_url = settings.AI_PROVIDER_BASE_URL
+        self.model = settings.AI_PROVIDER_MODEL
         self.client = httpx.AsyncClient(timeout=60.0)
 
         if not self.api_key:
-            logger.warning("OPENAI_API_KEY not set! OpenAI service will not work until the environment variable is configured.")
+            logger.warning("AI_PROVIDER_API_KEY not set! OpenAI service will not work until the environment variable is configured.")
 
     async def chat_completion(
         self,
@@ -29,7 +29,7 @@ class OpenAIService:
         try:
             # Check if API key is configured
             if not self.api_key:
-                logger.error("OpenAI API key not configured. Please set OPENAI_API_KEY environment variable.")
+                logger.error("OpenAI API key not configured. Please set AI_PROVIDER_API_KEY environment variable.")
                 return "OpenAI service is not configured. Please contact the administrator to set up the API key."
 
             # Prepare messages
