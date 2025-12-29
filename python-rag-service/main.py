@@ -69,10 +69,14 @@ async def health():
 
 if __name__ == "__main__":
     import uvicorn
+    import os
+
+    # Use Railway's PORT environment variable if available, otherwise use settings
+    port = int(os.getenv("PORT", settings.API_PORT))
 
     uvicorn.run(
         "main:app",
         host=settings.API_HOST,
-        port=settings.API_PORT,
+        port=port,
         reload=True,
     )
