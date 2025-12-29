@@ -44,10 +44,10 @@ async def startup_event():
 async def shutdown_event():
     """Run on application shutdown."""
     logger.info("Shutting down RAG Assistant API...")
-    from app.services.deepseek_service import deepseek_service
+    from app.services.openai_service import openai_service
     from app.services.database_service import db_service
 
-    await deepseek_service.close()
+    await openai_service.close()
     db_service.close()
 
 

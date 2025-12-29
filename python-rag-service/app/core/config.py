@@ -3,10 +3,10 @@ from typing import List
 
 
 class Settings(BaseSettings):
-    # AI Provider
-    DEEPSEEK_API_KEY: str
-    DEEPSEEK_BASE_URL: str = "https://api.deepseek.com"
-    DEEPSEEK_MODEL: str = "deepseek-chat"
+    # AI Provider (OpenAI)
+    OPENAI_API_KEY: str
+    OPENAI_BASE_URL: str = "https://api.openai.com/v1"
+    OPENAI_MODEL: str = "gpt-4o-mini"
 
     # Database
     POSTGRES_URL: str

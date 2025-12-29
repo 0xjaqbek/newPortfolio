@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Optional
 from app.services.chroma_service import chroma_service
-from app.services.deepseek_service import deepseek_service
+from app.services.openai_service import openai_service
 from app.services.database_service import db_service
 from datetime import datetime
 import logging
@@ -13,7 +13,7 @@ class RAGService:
 
     def __init__(self):
         self.chroma = chroma_service
-        self.deepseek = deepseek_service
+        self.openai = openai_service
         self.db = db_service
 
     def _detect_temporal_query(self, query: str) -> Optional[Dict[str, str]]:
@@ -212,8 +212,8 @@ class RAGService:
             # Build system prompt with context
             system_prompt = self._build_system_prompt(context_parts)
 
-            # Get response from DeepSeek
-            response = await self.deepseek.chat_completion(
+            # Get response from OpenAI
+            response = await self.openai.chat_completion(
                 messages=messages,
                 system_prompt=system_prompt,
             )
@@ -243,7 +243,7 @@ class RAGService:
 - Be professional yet conversational and helpful
 
 ## RAG CAPABILITIES
-You have access to a comprehensive knowledge base including:
+You have access to a comprehensive knowledge base powered by semantic search including:
 - Portfolio and project information (Protokół 999, 34us ETH Warsaw, Interactive Portfolio)
 - GitHub repositories with commit timelines, languages, topics, and READMEs
 - Technical skills and work experience
@@ -350,7 +350,7 @@ Please provide:
 """
 
             messages = [{"role": "user", "content": analysis_prompt}]
-            analysis = await self.deepseek.chat_completion(messages)
+            analysis = await self.openai.chat_completion(messages)
 
             return {
                 "summary": analysis,
