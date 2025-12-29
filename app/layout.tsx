@@ -18,12 +18,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const easterEggEnabled = process.env.NEXT_PUBLIC_ENABLE_EASTER_EGG === 'true';
+
   return (
     <html lang="en">
       <body>
         <ThemeProvider>
           <ChatProvider>
-            <ConsoleEasterEgg />
+            {easterEggEnabled && <ConsoleEasterEgg />}
             {children}
           </ChatProvider>
         </ThemeProvider>
