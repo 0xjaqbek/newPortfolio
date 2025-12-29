@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     OPENAI_MODEL: str = "gpt-4o-mini"
 
     # Database
-    POSTGRES_URL: str
+    POSTGRES_URL: str = ""  # Will be set via Railway environment variables
 
     # GitHub
     GITHUB_TOKEN: str = ""
