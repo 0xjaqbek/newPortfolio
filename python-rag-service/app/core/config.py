@@ -4,7 +4,7 @@ from typing import List
 
 class Settings(BaseSettings):
     # AI Provider (OpenAI)
-    OPENAI_API_KEY: str
+    OPENAI_API_KEY: str = ""  # Will be set via Railway environment variables
     OPENAI_BASE_URL: str = "https://api.openai.com/v1"
     OPENAI_MODEL: str = "gpt-4o-mini"
 
