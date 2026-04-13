@@ -32,7 +32,7 @@
       },
       "description": "Founded and developed an AI-powered medical emergency training platform for paramedic students and healthcare professionals. The platform provides realistic medical scenarios with intelligent assessment and progress tracking.",
       "achievements": [
-        "Launched production platform serving medical students across Poland (protokol999.pl)",
+        "Launched production platform serving medical students across Poland (trenujratuj.pl)",
         "Built advanced AI-powered scenario engine with real-time feedback",
         "Implemented comprehensive analytics and progress tracking system",
         "Aligned all content with ERC 2021 Guidelines for clinical accuracy",
@@ -86,6 +86,145 @@
   ],
 
   "projects": [
+    {
+      "id": "proj-2",
+      "name": "Trenuj Ratuj",
+      "category": "Medical Training / Web Application",
+      "status": "Production",
+      "url": "https://trenujratuj.pl",
+      "github": "https://github.com/0xjaqbek/paramed-ai-trainer",
+      "period": {
+        "start": "2025-10",
+        "end": "Present"
+      },
+      "description": "AI-powered medical emergency training simulator for paramedic students and emergency medical professionals in Poland. Provides realistic, interactive medical scenarios where students practice critical decision-making skills — cardiac emergencies, trauma, respiratory distress, neurological and pediatric cases — in a safe environment. All protocols aligned with ERC 2021 Guidelines. Production platform live at trenujratuj.pl.",
+      "features": [
+        "AI-powered real-time assessment and feedback adapting to student decisions",
+        "Realistic scenario engine covering 8+ medical specialties (cardiac, trauma, respiratory, neuro, pediatric, obstetric, toxicology, environmental)",
+        "ABCDE assessment, SAMPLE history, CPR, ACLS, and medication administration training",
+        "Progress tracking and comprehensive performance analytics dashboard",
+        "Professional scenario builder for medical instructors to create custom training materials",
+        "Role-based access: students, instructors, administrators",
+        "ERC 2021 Guidelines aligned for clinical accuracy",
+        "GDPR-compliant with encrypted communications and secure JWT authentication",
+        "Multi-tier subscription system with institutional licensing",
+        "Fully responsive — desktop, tablet, and mobile support"
+      ],
+      "technologies": [
+        "React 18",
+        "Vite",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Redis",
+        "JavaScript",
+        "Python",
+        "Docker",
+        "Heroku",
+        "JWT"
+      ],
+      "highlights": [
+        "Built and launched production medical training platform serving paramedic students across Poland",
+        "Integrated AI-powered scenario engine with natural language understanding for realistic patient interactions",
+        "Full-stack architecture: React 18 + Vite frontend, Node.js/Express backend, PostgreSQL + Redis",
+        "Custom ML models for scenario evaluation and adaptive difficulty adjustment",
+        "Aligned to ERC 2021 Guidelines and Polish paramedic curriculum requirements"
+      ]
+    },
+    {
+      "id": "proj-3",
+      "name": "TRIAGE MCI",
+      "category": "Medical / PWA",
+      "status": "Production",
+      "url": "https://github.com/0xjaqbek/triage/releases/latest",
+      "github": "https://github.com/0xjaqbek/triage",
+      "period": {
+        "start": "2026-02",
+        "end": "Present"
+      },
+      "description": "Progressive Web Application for managing Mass Casualty Incidents (MCI). Implements the START (Simple Triage and Rapid Treatment) algorithm per Polish Ministry of Health Procedure MZ v2.3. Digitizes three mandatory paper forms: Patient Dislocation Table, Hospital Table, and GDM Report. Runs fully offline on iOS, Android, and Windows with 7 language support.",
+      "features": [
+        "6-step START algorithm decision wizard classifying patients into T1-T4 triage categories",
+        "Interactive SVG body injury diagram with 9 body zones and 7 injury types",
+        "Dispatch management: ZRM team assignment, hospital capacity tracking (red/yellow beds)",
+        "SMS/link import for dispatcher data sharing (Base64, GSM-7 compatible)",
+        "Report generation with copy-to-clipboard, SMS, and email export",
+        "Re-triage with confirmation and full change history",
+        "Fully offline PWA with automatic localStorage persistence across sessions",
+        "7 language interface: Polish, English, Italian, French, German, Czech, Portuguese",
+        "Installable on iOS (Safari), Android (Chrome), and Windows (Edge/Chrome)",
+        "Downloadable Windows server executable (.exe) for offline hospital environments"
+      ],
+      "technologies": [
+        "HTML",
+        "JavaScript",
+        "Go",
+        "PWA",
+        "Service Worker",
+        "localStorage",
+        "SVG"
+      ],
+      "highlights": [
+        "Fully offline-capable PWA installable across all major platforms and operating systems",
+        "Compliant with Polish Ministry of Health MZ v2.3 mass casualty procedure",
+        "Supports 7 languages with complete UI localization",
+        "Includes Go-based local server executable for fully air-gapped Windows deployments",
+        "Digitizes all three mandatory MCI paper forms into a single mobile-first application"
+      ]
+    },
+    {
+      "id": "proj-4",
+      "name": "Plonbli",
+      "category": "Marketplace / Social Platform / PWA",
+      "status": "In Development",
+      "url": "",
+      "github": "https://github.com/0xjaqbek/plonbli",
+      "period": {
+        "start": "2026-03",
+        "end": "Present"
+      },
+      "description": "Farmer-consumer marketplace and social platform that eliminates supply chain middlemen by directly connecting local farmers with consumers based on geolocation. Combines full marketplace functionality (listings, cart, checkout, delivery coordination) with social features (feed, groups, events, messaging). Built as a PWA with a blockchain-ready data layer for farming documentation and reputation.",
+      "features": [
+        "Geolocation-based farmer and product discovery using PostGIS",
+        "Marketplace with product listings, cart, checkout, and delivery/pickup coordination",
+        "Buying groups and community self-organization tools",
+        "Crop documentation system with blockchain-ready repository pattern",
+        "Real-time 1:1 and group messaging via WebSockets",
+        "Live social feed and notifications via SSE",
+        "Farmer reputation and review system (blockchain-ready)",
+        "Multi-provider auth: email/password, Google, Facebook via NextAuth.js v5",
+        "Polish full-text product search using PostgreSQL tsvector/tsquery",
+        "Image storage on Cloudflare R2 (S3-compatible)",
+        "PWA with offline support via next-pwa service worker",
+        "i18n with next-intl (Polish default)"
+      ],
+      "technologies": [
+        "Next.js 15",
+        "TypeScript",
+        "PostgreSQL",
+        "PostGIS",
+        "Drizzle ORM",
+        "Neon",
+        "NextAuth.js v5",
+        "WebSockets",
+        "SSE",
+        "Cloudflare R2",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Zod",
+        "next-pwa",
+        "next-intl"
+      ],
+      "highlights": [
+        "Domain-driven monolithic architecture separating marketplace, social, farming, logistics, and geo concerns",
+        "Blockchain-ready repository pattern for farming logs and reputation — PostgreSQL today, swappable to chain without app changes",
+        "Full-stack real-time features: WebSocket chat and SSE-powered live feed",
+        "PostGIS geolocation for proximity-based farmer and product discovery",
+        "Complete e-commerce and social platform in a single Next.js 15 App Router application"
+      ]
+    },
     {
       "id": "proj-1",
       "name": "Interactive Portfolio with Guardian Security",
