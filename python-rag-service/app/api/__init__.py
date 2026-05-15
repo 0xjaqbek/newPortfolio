@@ -4,6 +4,7 @@ from .documents import router as documents_router
 from .search import router as search_router
 from .security import router as security_router
 from .health import router as health_router
+from .admin import router as admin_router
 
 api_router = APIRouter()
 
@@ -12,5 +13,6 @@ api_router.include_router(chat_router, prefix="/chat", tags=["chat"])
 api_router.include_router(documents_router, prefix="/documents", tags=["documents"])
 api_router.include_router(search_router, prefix="/search", tags=["search"])
 api_router.include_router(security_router, prefix="/security", tags=["security"])
+api_router.include_router(admin_router, prefix="/admin", tags=["admin"])
 
 __all__ = ["api_router"]
