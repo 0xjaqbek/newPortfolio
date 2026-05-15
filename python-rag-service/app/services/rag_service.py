@@ -188,7 +188,7 @@ class RAGService:
                         results = self.chroma.query(
                             collection_name=collection_name,
                             query_text=last_user_message,
-                            n_results=3,
+                            n_results=10,
                         )
 
                     if results["documents"]:
@@ -200,8 +200,8 @@ class RAGService:
                                 results["distances"],
                             )
                         ):
-                            # Only include relevant results (distance < 0.7)
-                            if distance < 0.7:
+                            # Only include relevant results (distance < 1.0)
+                            if distance < 1.0:
                                 context_parts.append(f"\n{doc}")
                                 metadata["sources"].append({
                                     "collection": collection_name,
