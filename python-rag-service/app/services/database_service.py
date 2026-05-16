@@ -101,7 +101,6 @@ class DatabaseService:
                         COUNT(*) as count,
                         MAX(timestamp) as last_occurrence
                     FROM security_audit_logs
-                    WHERE "activityType" = 'PROMPT_INJECTION_ATTEMPT'
                     GROUP BY "activityType", severity
                     ORDER BY count DESC
                 """)

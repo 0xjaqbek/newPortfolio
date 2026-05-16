@@ -63,6 +63,34 @@ Timestamp: {log['timestamp']}
     else:
         logger.error("Failed to embed security logs")
 
+    # Embed attack pattern summary
+    patterns = db_service.get_attack_patterns()
+    if patterns:
+        total_attacks = sum(p['count'] for p in patterns)
+        pattern_lines = '\n'.join(
+            f"- {p['activityType']} ({p['severity']}): {p['count']} occurrences, last seen {p['last_occurrence']}"
+            for p in patterns
+        )
+        summary_doc = f"""Guardian Security System — Attack Pattern Summary
+
+Total prompt injection attempts: {total_attacks}
+
+Attack breakdown:
+{pattern_lines}
+
+This portfolio uses a multi-layer security system (Guardian) that detects and logs prompt injection attempts,
+role manipulation, jailbreak attempts, system prompt extraction, and other adversarial inputs.
+Sessions with 5+ injection attempts are automatically suspended for 48 hours.
+IPs can be permanently blocked by the admin.
+"""
+        chroma_service.add_documents(
+            collection_name="security_logs",
+            documents=[summary_doc.strip()],
+            metadatas=[{"type": "attack_summary", "total_attacks": total_attacks}],
+            ids=["attack_pattern_summary"],
+        )
+        logger.info(f"Embedded attack pattern summary ({total_attacks} total attacks)")
+
 
 def embed_portfolio_data():
     """Embed portfolio and project data."""
