@@ -1,7 +1,7 @@
 {
   "name": "Jakub Skwierawski",
-  "title": "Full Stack Developer | Web3 & AI Solutions Architect",
-  "bio": "Passionate self-taught developer specializing in full-stack web applications, blockchain solutions, and AI-powered platforms. With an intense focus on web3 development and emerging technologies, I build innovative products that bridge traditional software with decentralized systems. My journey began with coding in elementary school and intensified over the past three years into professional-grade development. I leverage AI to rapidly expand my skill set while maintaining deep technical expertise in smart contracts, dApps, and complex web applications. Recent achievements include winning 3rd place at ETH Warsaw 2025 and launching a production medical training platform. Always eager to take on new challenges and push the boundaries of what's possible with modern technology.",
+  "title": "Full Stack Developer | Web3, AI & Medical Tech",
+  "bio": "Self-taught full-stack developer building production-grade web applications across medical technology, Web3, e-commerce, and AI. My work spans offline-first PWAs for emergency medical services, AI-powered training simulators, farmer-to-consumer marketplaces, client business tools, and blockchain platforms. I founded Trenuj Ratuj — an AI medical training platform for paramedic students in Poland — and won 3rd place at ETH Warsaw 2025. I build fast and ship to production, leveraging modern stacks (Next.js, React, Supabase, PostgreSQL) and AI tooling (RAG systems, LLMs, vector databases) to create things that actually work in the field.",
   "location": "Kaszuby, Pomorskie voivodeship, Poland",
 
   "contact": {
@@ -11,13 +11,13 @@
   },
 
   "skills": {
-    "languages": ["TypeScript", "JavaScript", "Solidity", "Python", "HTML", "CSS"],
-    "frameworks": ["Next.js", "React", "Node.js", "Express", "FastAPI", "Vite", "Tailwind CSS"],
+    "languages": ["TypeScript", "JavaScript", "Solidity", "Python", "Go", "HTML", "CSS"],
+    "frameworks": ["Next.js", "React", "Node.js", "Express", "FastAPI", "Vite", "Tailwind CSS", "TanStack Query", "TanStack Start", "Framer Motion", "Three.js"],
     "blockchain": ["Solidity", "Smart Contracts", "OnchainKit", "Base", "EVM Chains", "Web3.js", "Ethers.js"],
-    "ai-ml": ["OpenAI API", "DeepSeek", "AI Integration", "LangChain", "RAG (Retrieval-Augmented Generation)", "Sentence Transformers", "Semantic Search"],
-    "tools": ["Git", "GitHub", "Heroku", "Firebase", "Docker", "SCSS", "Prisma ORM"],
-    "databases": ["MongoDB", "Firebase", "PostgreSQL", "ChromaDB", "Vector Databases", "NoSQL"],
-    "other": ["REST APIs", "GraphQL", "WebSockets", "Telegram Bots", "dApp Development", "Microservices Architecture"]
+    "ai-ml": ["OpenAI API", "DeepSeek", "AI Integration", "RAG (Retrieval-Augmented Generation)", "Sentence Transformers", "Semantic Search", "Vector Embeddings"],
+    "tools": ["Git", "GitHub", "Heroku", "Railway", "Vercel", "Docker", "Prisma ORM", "Drizzle ORM", "Supabase", "Firebase", "Zustand", "i18next"],
+    "databases": ["PostgreSQL", "Neon Serverless", "Supabase", "ChromaDB", "MongoDB", "Firebase", "IndexedDB", "Redis", "Vector Databases"],
+    "other": ["PWA / Service Worker", "REST APIs", "WebSockets", "SSE", "Telegram Bots", "dApp Development", "Microservices Architecture", "Offline-first Architecture"]
   },
 
   "experience": [
@@ -30,16 +30,17 @@
         "start": "2025-12",
         "end": "Present"
       },
-      "description": "Founded and developed an AI-powered medical emergency training platform for paramedic students and healthcare professionals. The platform provides realistic medical scenarios with intelligent assessment and progress tracking.",
+      "description": "Founded and developed an AI-powered medical emergency training platform for paramedic students and healthcare professionals in Poland. The platform provides realistic medical scenarios with intelligent assessment, progress tracking and instructor tooling. Live at trenujratuj.pl.",
       "achievements": [
         "Launched production platform serving medical students across Poland (trenujratuj.pl)",
-        "Built advanced AI-powered scenario engine with real-time feedback",
-        "Implemented comprehensive analytics and progress tracking system",
+        "Built AI-powered scenario engine covering 8+ specialties with real-time adaptive feedback",
+        "Implemented comprehensive analytics dashboard and progress tracking system",
         "Aligned all content with ERC 2021 Guidelines for clinical accuracy",
         "Created professional scenario builder for medical instructors",
-        "Achieved 24/7 cloud-based accessibility for flexible learning"
+        "Multi-tier subscription system with institutional licensing",
+        "Full-stack: React 18 + Vite frontend, Node.js/Express backend, PostgreSQL + Redis"
       ],
-      "technologies": ["Next.js", "TypeScript", "React", "AI Integration", "Node.js", "Firebase"]
+      "technologies": ["React 18", "Vite", "Node.js", "Express.js", "PostgreSQL", "Redis", "Tailwind CSS", "shadcn/ui", "Docker", "Heroku", "JWT"]
     },
     {
       "id": "exp-2",
@@ -71,17 +72,17 @@
         "start": "2022-01",
         "end": "Present"
       },
-      "description": "Building web applications, smart contracts, Telegram bots, AI-powered systems, and Web3 solutions. Specializing in full-stack development with focus on modern frameworks, blockchain technology, and AI/ML integrations including RAG (Retrieval-Augmented Generation) systems.",
+      "description": "Building production web applications across medical tech, e-commerce, business tooling, and Web3. Clients and projects include a bike repair shop management system (Dr Kolo), a suite of EMS medical tools (Apteka ZRM, Baza Lekow, ALS/RSI trainers), a farmer marketplace (Plonbli), a family memory archive, and various dApps and smart contracts.",
       "achievements": [
+        "Delivered Dr Kolo — full-stack bike repair shop app with bookings, orders, AI chat and admin panel",
+        "Built suite of offline-first EMS tools: Apteka ZRM (pharmacy manager), Baza Lekow (drug scanner), ALS Trainer, RSI Trainer",
+        "Developed Plonbli — farmer-consumer marketplace with 327+ commits, real-time chat, PostGIS geolocation and PWA",
+        "Implemented RAG-powered AI system with Python/FastAPI/ChromaDB for semantic search across portfolio data",
         "Developed multiple dApps and smart contracts for EVM-compatible chains",
-        "Implemented RAG-powered AI systems with vector databases for semantic search",
-        "Built Python microservices with FastAPI for AI integrations",
-        "Created custom Telegram bots and automation tools",
-        "Built responsive web applications using modern frameworks",
-        "Contributed to open-source Web3 projects",
-        "Rapid skill acquisition through AI-assisted learning"
+        "Built Memory Keeper — private multi-language family archive with voice recording and Supabase storage",
+        "Shipped aFFiRM — Pokemon card shop with Three.js visuals, Framer Motion and Solana Web3.js integration"
       ],
-      "technologies": ["React", "Next.js", "TypeScript", "Solidity", "Node.js", "Python", "FastAPI", "ChromaDB", "Tailwind CSS", "Firebase", "Web3", "RAG Systems"]
+      "technologies": ["React", "Next.js", "TypeScript", "Vite", "Supabase", "PostgreSQL", "Neon", "Drizzle ORM", "Solidity", "Node.js", "Python", "FastAPI", "ChromaDB", "Tailwind CSS", "PWA", "Web3"]
     }
   ],
 
