@@ -44,8 +44,8 @@ Highlight fg: #1A0800  (dark text on amber selection bar)
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║  ▄▄▄ ▄▄▄ ▄▄▄ ▄▄▄ ▄▄▄    JAKUB SKWIERAWSKI                  ║
-║  ███ ███ ███ ███ ███    Full-Stack Developer                  ║
+║  ▄▄▄ ▄▄▄ ▄▄▄ ▄▄▄ ▄▄▄    JAKUB SKWIERAWSKI                    ║
+║  ███ ███ ███ ███ ███    Full-Stack Developer                 ║
 ╠══════════════╦═══════════════════════════════════════════════╣
 ║ NAVIGATION   ║ C:\PORTFOLIO\ABOUT.TXT                        ║
 ║──────────────║───────────────────────────────────────────────║
@@ -58,7 +58,7 @@ Highlight fg: #1A0800  (dark text on amber selection bar)
 ║ [AI CHAT    ]║                                               ║
 ║              ║                                               ║
 ╠══════════════╩═══════════════════════════════════════════════╣
-║ F1=About  F2=Skills  F3=Projects  ESC=Chat  [SYS READY] █   ║
+║ F1=About  F2=Skills  F3=Projects  ESC=Chat  [SYS READY] █    ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
