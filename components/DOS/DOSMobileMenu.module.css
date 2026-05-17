@@ -1,0 +1,81 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 8, 0, 0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+
+.menu {
+  border: 2px solid var(--dos-amber);
+  background: var(--dos-bg);
+  min-width: 280px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleBar {
+  background: var(--dos-amber);
+  color: var(--dos-highlight-fg);
+  padding: 4px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--dos-highlight-fg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.closeBtn:hover {
+  text-decoration: underline;
+}
+
+.item {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 7px 12px;
+  background: none;
+  border: none;
+  color: var(--dos-amber);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.item:hover,
+.item.active {
+  background: var(--dos-amber);
+  color: var(--dos-highlight-fg);
+}
+
+.num {
+  color: var(--dos-dim);
+  min-width: 1.5em;
+  flex-shrink: 0;
+}
+
+.item:hover .num,
+.item.active .num {
+  color: var(--dos-highlight-fg);
+}
+
+.separator {
+  padding: 2px 12px;
+  color: var(--dos-dim);
+  font-size: 0.75rem;
+  user-select: none;
+}

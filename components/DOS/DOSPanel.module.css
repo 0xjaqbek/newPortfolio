@@ -1,0 +1,37 @@
+.panel {
+  border: 1px solid var(--dos-amber);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.panelTitle {
+  padding: 2px 8px;
+  background: var(--dos-amber);
+  color: var(--dos-highlight-fg);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.panelContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    border: none;
+    border-top: 1px solid var(--dos-amber);
+  }
+
+  .panelContent {
+    padding: 0.75rem;
+  }
+}

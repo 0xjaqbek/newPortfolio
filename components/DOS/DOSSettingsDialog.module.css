@@ -1,0 +1,112 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 600;
+}
+
+.dialog {
+  border: 2px solid var(--dos-amber);
+  background: var(--dos-bg);
+  min-width: 340px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleBar {
+  background: var(--dos-amber);
+  color: var(--dos-highlight-fg);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  user-select: none;
+}
+
+.body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.setting {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--dos-amber);
+}
+
+.toggle {
+  background: none;
+  border: none;
+  color: var(--dos-amber);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.toggle:hover {
+  color: var(--dos-highlight-bg);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.groupLabel {
+  font-size: 0.7rem;
+  color: var(--dos-dim);
+  letter-spacing: 1px;
+  margin-bottom: 0.15rem;
+}
+
+.radio {
+  background: none;
+  border: none;
+  color: var(--dos-amber);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 2px 0;
+  text-align: left;
+}
+
+.radio:hover {
+  color: var(--dos-highlight-bg);
+}
+
+.footer {
+  border-top: 1px solid var(--dos-dim);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.okBtn {
+  background: var(--dos-amber);
+  border: none;
+  color: var(--dos-highlight-fg);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 2px 10px;
+}
+
+.okBtn:hover {
+  opacity: 0.85;
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: var(--dos-dim);
+}

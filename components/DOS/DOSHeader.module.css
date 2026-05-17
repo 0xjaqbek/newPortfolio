@@ -1,0 +1,60 @@
+.header {
+  border-bottom: 1px solid var(--dos-amber);
+  padding: 0.4rem 1rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  overflow: hidden;
+}
+
+.ascii {
+  font-size: 0.5rem;
+  line-height: 1.15;
+  white-space: pre;
+  color: var(--dos-amber);
+  text-shadow: 0 0 4px rgba(255, 176, 0, 0.4);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  overflow: hidden;
+}
+
+.name {
+  font-size: 1rem;
+  color: var(--dos-amber);
+  text-shadow: 0 0 4px rgba(255, 176, 0, 0.4);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.title {
+  font-size: 0.75rem;
+  color: var(--dos-dim);
+  letter-spacing: 3px;
+}
+
+.location {
+  font-size: 0.7rem;
+  color: var(--dos-dim);
+}
+
+@media (max-width: 768px) {
+  .ascii {
+    display: none;
+  }
+
+  .name {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .header {
+    padding: 0.3rem 0.75rem;
+  }
+}

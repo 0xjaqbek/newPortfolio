@@ -1,0 +1,53 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.navTitle {
+  padding: 3px 8px;
+  background: var(--dos-amber);
+  color: var(--dos-highlight-fg);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4px 6px;
+  background: none;
+  border: none;
+  color: var(--dos-amber);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  gap: 4px;
+  line-height: 1.4;
+}
+
+.item:hover {
+  background: rgba(255, 176, 0, 0.12);
+}
+
+.item.active {
+  background: var(--dos-amber);
+  color: var(--dos-highlight-fg);
+}
+
+.arrow {
+  width: 1em;
+  flex-shrink: 0;
+  font-size: 0.7rem;
+}
+
+.label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
