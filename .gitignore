@@ -67,6 +67,11 @@ build/
 python-rag-service/embeddings/
 python-rag-service/data/*
 !python-rag-service/data/profile.json
+!python-rag-service/data/private-readmes/
+python-rag-service/data/private-readmes/*
+!python-rag-service/data/private-readmes/github-repo-notes/
+python-rag-service/data/private-readmes/github-repo-notes/*
+!python-rag-service/data/private-readmes/github-repo-notes/*.md
 python-rag-service/*.db
 python-rag-service/*.sqlite
 python-rag-service/.env

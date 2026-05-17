@@ -20,10 +20,13 @@ def _run_reembed():
         if app_root not in sys.path:
             sys.path.insert(0, app_root)
 
-        from scripts.embed_initial_data import embed_portfolio_data, embed_documentation, embed_security_logs
+        from scripts.embed_initial_data import embed_portfolio_data, embed_documentation, embed_security_logs, embed_private_readmes
         logger.info("[reembed] Embedding portfolio and documentation...")
         embed_portfolio_data()
         embed_documentation()
+
+        logger.info("[reembed] Embedding private repo notes...")
+        embed_private_readmes()
 
         logger.info("[reembed] Embedding security logs and attack patterns...")
         embed_security_logs()

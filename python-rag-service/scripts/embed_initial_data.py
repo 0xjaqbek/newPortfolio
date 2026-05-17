@@ -92,6 +92,68 @@ IPs can be permanently blocked by the admin.
         logger.info(f"Embedded attack pattern summary ({total_attacks} total attacks)")
 
 
+def embed_private_readmes():
+    """Embed private repo notes from github-repo-notes folder."""
+    logger.info("Embedding private repo notes...")
+
+    possible_dirs = [
+        "data/private-readmes/github-repo-notes",
+        "../data/private-readmes/github-repo-notes",
+        "../../data/private-readmes/github-repo-notes",
+        os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "private-readmes", "github-repo-notes"),
+    ]
+
+    notes_dir = None
+    for d in possible_dirs:
+        if os.path.isdir(d):
+            notes_dir = d
+            logger.info(f"Found repo notes at: {d}")
+            break
+
+    if not notes_dir:
+        logger.warning("github-repo-notes directory not found, skipping")
+        return
+
+    documents = []
+    metadatas = []
+    ids = []
+
+    for filename in os.listdir(notes_dir):
+        if not filename.endswith(".md"):
+            continue
+        filepath = os.path.join(notes_dir, filename)
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+        if not content:
+            continue
+
+        repo_name = filename.replace("-README.md", "").replace(".md", "")
+        documents.append(f"# {repo_name}\n\n{content}")
+        metadatas.append({
+            "type": "repo_note",
+            "repo": repo_name,
+            "source": filename,
+            "person": "Jakub Skwierawski",
+        })
+        ids.append(f"repo_note_{repo_name.lower().replace('-', '_')}")
+
+    if not documents:
+        logger.warning("No markdown files found in github-repo-notes")
+        return
+
+    success = chroma_service.add_documents(
+        collection_name="custom_docs",
+        documents=documents,
+        metadatas=metadatas,
+        ids=ids,
+    )
+
+    if success:
+        logger.info(f"Embedded {len(documents)} repo notes")
+    else:
+        logger.error("Failed to embed repo notes")
+
+
 def embed_portfolio_data():
     """Embed portfolio and project data."""
     logger.info("Embedding portfolio data...")
@@ -391,6 +453,7 @@ def main():
     # Embed data
     embed_portfolio_data()
     embed_documentation()
+    embed_private_readmes()
     embed_security_logs()
 
     # Embed GitHub repositories

@@ -29,4 +29,10 @@ embeddings/
 
 # Data
 data/
+!data/profile.json
+!data/private-readmes/
+data/private-readmes/*
+!data/private-readmes/github-repo-notes/
+data/private-readmes/github-repo-notes/*
+!data/private-readmes/github-repo-notes/*.md
 uploads/

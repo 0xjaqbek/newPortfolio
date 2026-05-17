@@ -27,17 +27,22 @@ export async function loadKnowledgeBase(): Promise<any> {
 export async function loadPrivateReadmes(): Promise<Record<string, string>> {
   try {
     const dirPath = path.join(process.cwd(), 'data', 'private-readmes');
-    const files = fs.readdirSync(dirPath);
     const readmes: Record<string, string> = {};
 
-    for (const file of files) {
-      if (file.endsWith('.md')) {
-        const filePath = path.join(dirPath, file);
-        const content = fs.readFileSync(filePath, 'utf-8');
-        readmes[file] = content;
+    function readMdFiles(dir: string, prefix = '') {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isDirectory()) {
+          readMdFiles(path.join(dir, entry.name), entry.name + '/');
+        } else if (entry.name.endsWith('.md')) {
+          const filePath = path.join(dir, entry.name);
+          const content = fs.readFileSync(filePath, 'utf-8');
+          readmes[prefix + entry.name] = content;
+        }
       }
     }
 
+    readMdFiles(dirPath);
     return readmes;
   } catch (error) {
     console.error('Failed to load private READMEs:', error);
