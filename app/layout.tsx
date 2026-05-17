@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import '@/styles/effects/scanlines.css';
-import '@/styles/effects/crt-curvature.css';
-import '@/styles/effects/glow.css';
-import '@/styles/effects/chromatic-aberration.css';
-import { ThemeProvider } from '@/context/ThemeContext';
+import { AppSettingsProvider } from '@/context/AppSettingsContext';
 import { ChatProvider } from '@/context/ChatContext';
 import ConsoleEasterEgg from '@/components/ConsoleEasterEgg';
 
@@ -23,12 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeProvider>
+        <AppSettingsProvider>
           <ChatProvider>
             {easterEggEnabled && <ConsoleEasterEgg />}
             {children}
           </ChatProvider>
-        </ThemeProvider>
+        </AppSettingsProvider>
       </body>
     </html>
   );

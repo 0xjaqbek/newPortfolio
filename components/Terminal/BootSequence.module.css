@@ -1,70 +1,43 @@
 .bootSequence {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--color-background);
+  inset: 0;
+  background: #1A0800;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 0.3s ease-in;
 }
 
 .content {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  color: var(--color-primary);
-  padding: var(--spacing-lg);
-  max-width: 800px;
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 0.9rem;
+  color: #FFB000;
+  padding: 2rem;
+  max-width: 700px;
   width: 100%;
+  text-shadow: 0 0 4px rgba(255, 176, 0, 0.4);
 }
 
 .line {
-  margin-bottom: 0.3rem;
-  animation: lineAppear 0.1s ease-in;
+  margin-bottom: 0.25rem;
 }
 
 .prompt {
-  color: var(--color-secondary);
+  color: #A06000;
   margin-right: 0.5rem;
 }
 
 .cursor {
   display: inline-block;
   width: 10px;
-  height: 16px;
-  background: var(--color-primary);
-  animation: blink 0.8s infinite;
+  height: 15px;
+  background: #FFB000;
+  animation: blink 0.8s step-end infinite;
   margin-left: 0.5rem;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes lineAppear {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  vertical-align: middle;
 }
 
 @keyframes blink {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

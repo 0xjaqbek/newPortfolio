@@ -28,7 +28,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
 
   useEffect(() => {
     if (currentLine < bootMessages.length) {
-      const delay = currentLine === bootMessages.length - 1 ? 1000 : 150;
+      const delay = currentLine === bootMessages.length - 1 ? 800 : 100;
       const timer = setTimeout(() => {
         setCurrentLine(currentLine + 1);
       }, delay);
