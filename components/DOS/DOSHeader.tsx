@@ -17,8 +17,8 @@ export default function DOSHeader() {
         <div className={styles.name}>
           JAKUB SKWIERAWSKI<BlockCursor />
         </div>
-        <div className={styles.title}>FULL-STACK DEVELOPER</div>
-        <div className={styles.location}>Warsaw, Poland</div>
+        <div className={styles.title}>AI FULL-STACK DEVELOPER</div>
+        <div className={styles.location}>Kościerzyna, Poland</div>
       </div>
     </div>
   );
