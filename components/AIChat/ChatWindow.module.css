@@ -141,6 +141,11 @@
   border: 1px solid var(--dos-dim);
   font-family: var(--font-mono);
   outline: none;
+  resize: none;
+  line-height: 1.5;
+  min-height: 2rem;
+  max-height: 6rem;
+  overflow-y: auto;
 }
 
 .input:focus {

@@ -20,8 +20,7 @@ export default function ChatWindow() {
     scrollToBottom();
   }, [messages]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const sendMessage = async () => {
     if (!input.trim() || isLoading) return;
 
     const userMessage = input.trim();
@@ -56,6 +55,18 @@ export default function ChatWindow() {
       });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    sendMessage();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
     }
   };
 
@@ -124,13 +135,14 @@ export default function ChatWindow() {
       </div>
 
       <form onSubmit={handleSubmit} className={styles.inputForm}>
-        <input
-          type="text"
+        <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
+          onKeyDown={handleKeyDown}
+          placeholder="Type your message... (Shift+Enter for new line)"
           className={styles.input}
           disabled={isLoading}
+          rows={1}
         />
         <button type="submit" disabled={isLoading || !input.trim()} className={styles.sendButton}>
           [SEND]
