@@ -226,6 +226,271 @@
       ]
     },
     {
+      "id": "proj-5",
+      "name": "Dr Kolo — Bike Repair Shop App",
+      "category": "Business / Full Stack Web Application",
+      "status": "Production",
+      "url": "",
+      "github": "https://github.com/0xjaqbek/drkolo",
+      "period": {
+        "start": "2026-05",
+        "end": "Present"
+      },
+      "description": "Full-stack web application for a bike repair shop. Covers the public landing page, service pricing, repair order creation and tracking, appointment booking with admin calendar, a customer questionnaire, and an integrated AI chat widget with admin panel. Backend powered by Supabase with Vercel Functions as API proxy.",
+      "features": [
+        "Public landing page with gallery, service offer and branding",
+        "Pricing page driven by cennik.json",
+        "Repair order creation and status preview via hash link",
+        "Appointment booking with admin calendar view",
+        "Customer questionnaire with admin response view",
+        "In-page AI chat widget and ChatAdmin panel",
+        "Chat API with system prompt, SMS parsing and Supabase integration",
+        "Supabase migrations for orders, appointments, chat, service catalogue and surveys",
+        "Component, hook and SMS-parser unit tests with Vitest"
+      ],
+      "technologies": [
+        "Vite",
+        "React",
+        "TypeScript",
+        "React Router",
+        "TanStack Query",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Supabase",
+        "Vercel Functions",
+        "Vitest"
+      ],
+      "highlights": [
+        "End-to-end client project: public site + admin panel + AI chat in a single repo",
+        "Repair order tracking via unique hash links — no login required for customers",
+        "AI-powered chat with SMS parsing and system prompt customisation",
+        "Full test coverage for components, hooks and SMS parser with Vitest"
+      ]
+    },
+    {
+      "id": "proj-6",
+      "name": "Memory Keeper — Family Archive",
+      "category": "Web Application / Social",
+      "status": "Production",
+      "url": "",
+      "github": "private",
+      "period": {
+        "start": "2026-05",
+        "end": "Present"
+      },
+      "description": "Private family memory archive application. Family members log in, add text entries, photos, videos and voice recordings, and share access with relatives. Supports 7 UI languages. Built with TanStack Start and Supabase.",
+      "features": [
+        "Family authentication with role-based access (parent/writer vs viewer)",
+        "Memory entries: text, photo, video and voice",
+        "In-browser voice note recording",
+        "File uploads to Supabase Storage",
+        "Family sharing via ShareFamily component",
+        "7 UI languages: English, Polish, Czech, French, German, Spanish, Argentine Spanish",
+        "Landing page for private archive invitation flow"
+      ],
+      "technologies": [
+        "TanStack Start",
+        "React",
+        "TypeScript",
+        "Vite",
+        "Supabase",
+        "i18next",
+        "Tailwind CSS",
+        "Radix UI",
+        "Lucide React",
+        "Sonner"
+      ],
+      "highlights": [
+        "Role-based access: writers add memories, viewers browse only",
+        "Native browser voice recording with upload to Supabase Storage",
+        "Full i18n with 7 languages including regional Spanish variant",
+        "Private, closed-source — built for real family use"
+      ]
+    },
+    {
+      "id": "proj-7",
+      "name": "aFFiRM — Pokemon Card Shop",
+      "category": "E-Commerce / Web Application",
+      "status": "Production",
+      "url": "",
+      "github": "https://github.com/0xjaqbek/newAffirm",
+      "period": {
+        "start": "2025-04",
+        "end": "Present"
+      },
+      "description": "Modern Pokemon card shop and gallery under the aFFiRM brand. Features product carousels, a card gallery, dark/light themes, a demo local auth context, and lazy-loaded customer and admin dashboards.",
+      "features": [
+        "Shop page with card carousel and gallery section",
+        "Seeded card and order data in localStorage",
+        "Lazy-loaded customer and admin dashboards via React.lazy",
+        "Demo login modal and auth context",
+        "Light/dark theme toggle",
+        "Mobile detection with separate carousel behaviour",
+        "Manifest modal and brand marketing sections",
+        "Swiper, Framer Motion animations and Three.js visuals"
+      ],
+      "technologies": [
+        "Vite",
+        "React",
+        "JavaScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Swiper",
+        "Three.js",
+        "Solana Web3.js",
+        "Stripe.js",
+        "EmailJS",
+        "gh-pages"
+      ],
+      "highlights": [
+        "Three.js-powered visual effects in the shop UI",
+        "Framer Motion animations throughout with Swiper carousels",
+        "Blockchain-ready stack: Solana Web3.js and Stripe.js integrated",
+        "Deployed to GitHub Pages via gh-pages"
+      ]
+    },
+    {
+      "id": "proj-8",
+      "name": "Apteka ZRM — EMS Pharmacy Manager",
+      "category": "Medical / PWA / Web Application",
+      "status": "Production",
+      "url": "",
+      "github": "https://github.com/0xjaqbek/aptekazrm",
+      "period": {
+        "start": "2026-04",
+        "end": "Present"
+      },
+      "description": "Next.js application for managing medications in an Emergency Medical Services team. Combines GS1/DataMatrix barcode scanning, Supabase authentication, an inventory dashboard and full offline support via IndexedDB.",
+      "features": [
+        "Auth flow redirecting to dashboard or login based on Supabase session",
+        "Team creation by coordinator",
+        "Drug scanner using html5-qrcode with GS1 DataMatrix parsing",
+        "QR-code-based team joining",
+        "Inventory list with individual item view",
+        "Offline-first layer via IndexedDB (idb) and local store",
+        "Supabase types and database migrations",
+        "Next.js middleware/proxy layer"
+      ],
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Supabase Auth/SSR",
+        "Tailwind CSS",
+        "html5-qrcode",
+        "IndexedDB",
+        "Zustand",
+        "react-qr-code",
+        "date-fns"
+      ],
+      "highlights": [
+        "Offline-first: full IndexedDB layer keeps inventory accessible without internet",
+        "GS1 DataMatrix parsing for medication barcodes (GTIN, expiry, batch)",
+        "Supabase SSR auth with team-based access control",
+        "Designed for real EMS operational use"
+      ]
+    },
+    {
+      "id": "proj-9",
+      "name": "Baza Lekow — EMS Drug Database",
+      "category": "Medical / Web Application",
+      "status": "Production",
+      "url": "",
+      "github": "https://github.com/0xjaqbek/bazalekow",
+      "period": {
+        "start": "2026-04",
+        "end": "Present"
+      },
+      "description": "Drug database web app for Emergency Medical Services teams. Scan GS1/DataMatrix barcodes with the device camera, look up drugs via DrugsAPI, and maintain a local inventory with stock alerts and expiry tracking.",
+      "features": [
+        "Camera-based GS1/DataMatrix barcode scanning via html5-qrcode",
+        "Parser for GTIN/EAN, expiry date, batch and serial from GS1",
+        "Manual EAN and substance search",
+        "DrugsAPI integration via Vercel proxy endpoints",
+        "Local drug inventory: quantity, location, alert threshold, expiry",
+        "Split locations: warehouse vs ambulance",
+        "Low-stock and expiry alerts",
+        "JSON export and import"
+      ],
+      "technologies": [
+        "Vite",
+        "JavaScript",
+        "html5-qrcode",
+        "Neon Serverless Postgres",
+        "Vercel Functions",
+        "uuid",
+        "dotenv"
+      ],
+      "highlights": [
+        "Full GS1/DataMatrix parsing: GTIN, expiry, batch number and serial in one scan",
+        "Neon Serverless Postgres + Vercel Functions for serverless API proxy",
+        "Dual-location inventory (warehouse / ambulance) with threshold alerts",
+        "JSON export/import for offline backup and data transfer"
+      ]
+    },
+    {
+      "id": "proj-10",
+      "name": "ALS Trainer — Cardiac Arrest Algorithm",
+      "category": "Medical / Educational Tool",
+      "status": "Production",
+      "url": "",
+      "github": "https://github.com/0xjaqbek/als",
+      "period": {
+        "start": "2026-05",
+        "end": "Present"
+      },
+      "description": "Single-file training simulator for ALS/ZRM cardiac arrest algorithms. Choose a scenario (shockable or non-shockable rhythm) and arrange the correct sequence of actions from a randomised pool.",
+      "features": [
+        "Two training scenarios: shockable rhythm (VF) and non-shockable (asystole)",
+        "Randomised action pool — different order on every attempt",
+        "Click to build your algorithm, undo individual steps",
+        "Answer validation with correct/incorrect feedback",
+        "Responsive two-panel layout: available actions + your algorithm"
+      ],
+      "technologies": [
+        "HTML",
+        "CSS",
+        "Vanilla JavaScript"
+      ],
+      "highlights": [
+        "Zero dependencies — single HTML file deployable anywhere",
+        "Covers both shockable and non-shockable cardiac arrest pathways",
+        "Randomised action pool prevents pattern memorisation"
+      ]
+    },
+    {
+      "id": "proj-11",
+      "name": "RSI Trainer — Rapid Sequence Intubation",
+      "category": "Medical / Educational Tool",
+      "status": "Production",
+      "url": "",
+      "github": "https://github.com/0xjaqbek/Rsi",
+      "period": {
+        "start": "2026-04",
+        "end": "Present"
+      },
+      "description": "Step-by-step training app for the Rapid Sequence Intubation (RSI) 7P protocol. Calculates weight-based drug dosages for Fentanyl, Etomidate and Rocuronium in real time.",
+      "features": [
+        "Start form: patient weight and patient type",
+        "Step-by-step 7P protocol: preparation, preoxygenation, pretreatment, induction/paralysis, placement, post-intubation management",
+        "Multiple-choice questions at each stage",
+        "Weight-based dosage calculator for Fentanyl, Etomidate and Rocuronium",
+        "Error counter and summary screen",
+        "Procedure cheat sheet for quick reference",
+        "Additional case data in cases.json"
+      ],
+      "technologies": [
+        "HTML",
+        "CSS",
+        "Vanilla JavaScript"
+      ],
+      "highlights": [
+        "Real-time weight-based drug dosage calculation per patient",
+        "Full 7P RSI protocol walkthroughs with multiple-choice validation",
+        "Case library in cases.json for varied training scenarios"
+      ]
+    },
+    {
       "id": "proj-1",
       "name": "Interactive Portfolio with Guardian Security",
       "category": "Web Application",
