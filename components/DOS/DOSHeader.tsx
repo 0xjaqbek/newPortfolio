@@ -6,8 +6,8 @@ const ASCII_ART = `
      ██║  ██╔════╝
      ██║  ███████╗
 ██   ██║  ╚════██║
-╚██████╔╝ ███████║
- ╚═════╝  ╚══════╝`.trim();
+╚██████║  ███████║
+ ╚═════╝  ╚══════╝`.replace(/^\n/, '').trimEnd();
 
 export default function DOSHeader() {
   return (

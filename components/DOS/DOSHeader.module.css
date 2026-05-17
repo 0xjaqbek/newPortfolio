@@ -46,15 +46,38 @@
 
 @media (max-width: 768px) {
   .ascii {
-    display: none;
+    display: block;
+    font-size: 0.38rem;
+    line-height: 1.05;
   }
 
   .name {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     letter-spacing: 1px;
   }
 
   .header {
-    padding: 0.3rem 0.75rem;
+    gap: 0.6rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .title {
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+  }
+
+  .location {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .ascii {
+    font-size: 0.32rem;
+  }
+
+  .name {
+    font-size: 0.68rem;
+    letter-spacing: 0;
   }
 }
