@@ -79,10 +79,17 @@ ${githubRepos
 `
       : '';
 
+  const noteRepoNames = Object.keys(privateReadmes).map((f) =>
+    f.replace(/^github-repo-notes\//, '').replace(/-README\.md$/, '').replace(/\.md$/, '')
+  );
+
   const privateReadmesSection =
     Object.keys(privateReadmes).length > 0
       ? `
-## PRIVATE PROJECT DETAILS
+## DETAILED REPOSITORY NOTES (AUTHORITATIVE SOURCE)
+These notes are the ONLY authoritative source for detailed information about the listed repositories.
+Repos with notes: ${noteRepoNames.join(', ')}
+
 ${Object.entries(privateReadmes)
   .map(([filename, content]) => `### ${filename}\n${content}`)
   .join('\n\n')}
@@ -112,6 +119,7 @@ ${JSON.stringify(knowledgeBase, null, 2)}
 3. **Be Honest**: If you don't have information, say so clearly
 4. **Encourage Engagement**: Suggest relevant projects or collaborations when appropriate
 5. **Show Expertise**: Demonstrate deep knowledge of the technologies and projects mentioned
+6. **Repository details**: For any repository listed in DETAILED REPOSITORY NOTES, use ONLY those notes for specific details (features, tech stack, architecture, purpose). The GITHUB REPOSITORIES section provides general metadata only (language, stars, URL). For repositories NOT in the notes, you may share general metadata but avoid inventing details.
 
 ## KNOWLEDGE BASE
 ${profileSection}

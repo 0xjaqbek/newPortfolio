@@ -272,7 +272,8 @@ def embed_github_repos(github_token: str):
                 last_commit_formatted = last_commit or "Unknown"
                 last_commit_human = "Unknown"
 
-            # Build document content with enhanced chronological emphasis
+            # Build document content — metadata only, no README.
+            # Detailed repo info comes exclusively from github-repo-notes/ files (custom_docs collection).
             doc_content = f"""
 Jakub Skwierawski - GitHub Repository: {repo_name}
 
@@ -284,7 +285,7 @@ CHRONOLOGICAL INFORMATION (IMPORTANT FOR TIMELINE QUERIES):
 - Last Commit: {last_commit_human} ({last_commit_formatted})
 - Last Updated: {updated_at}
 
-REPOSITORY DETAILS:
+REPOSITORY OVERVIEW:
 Repository Name: {repo_name}
 Full Name: {repo.get("full_name", "")}
 Description: {repo.get("description", "No description")}
@@ -297,7 +298,6 @@ Topics/Tags: {", ".join(repo.get("topics", [])) if repo.get("topics") else "None
 STATISTICS:
 - Stars: {repo.get("stargazers_count", 0)}
 - Forks: {repo.get("forks_count", 0)}
-- Watchers: {repo.get("watchers_count", 0)}
 - Open Issues: {repo.get("open_issues_count", 0)}
 
 STATUS:
@@ -305,12 +305,6 @@ STATUS:
 - Fork: {repo.get("fork", False)}
 - Archived: {repo.get("archived", False)}
 """
-
-            # Add README if available
-            if readme:
-                # Limit README length to avoid too large embeddings
-                readme_preview = readme[:2000] + "..." if len(readme) > 2000 else readme
-                doc_content += f"\n\nREADME Preview:\n{readme_preview}"
 
             documents.append(doc_content.strip())
             metadatas.append({
