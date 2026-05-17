@@ -32,9 +32,9 @@ Highlight fg: #1A0800  (dark text on amber selection bar)
 - Effects are CSS-only constants — no runtime toggles
 
 ### Removed
-- `ThemeContext` — deleted entirely
-- Settings menu — removed
+- `ThemeContext` — replaced by a minimal `AppSettingsContext` (see Section 3)
 - All theme variants (green-phosphor, monochrome, matrix, custom)
+- All CRT toggle controls
 
 ---
 
@@ -122,15 +122,35 @@ Highlight fg: #1A0800  (dark text on amber selection bar)
 - Click or number key to select, `[X]` / ESC to close
 - No slide animation — instant open/close
 
+**`DOSSettingsDialog`** (`components/DOS/DOSSettingsDialog.tsx`)
+- Modal dialog, DOS-style: centered box with double-line border, dark overlay behind
+- Triggered by `F10=Settings` in the status bar (desktop) or a `[SETTINGS]` item in the mobile menu
+- Contains exactly two settings:
+  1. **Boot sequence** — `[X] SHOW BOOT SEQUENCE ON LOAD` — checkbox-style toggle rendered as `[X]` / `[ ]`
+  2. **AI provider** — `( ) DIRECT (DEEPSEEK)` / `(•) RAG ASSISTANT` — radio-style toggle rendered as `(•)` / `( )`
+- Settings persisted to `localStorage`
+- `[OK]` / `ESC` to close
+
+**`AppSettingsContext`** (`context/AppSettingsContext.tsx`)
+- Replaces `ThemeContext` — minimal, only two settings:
+  ```ts
+  interface AppSettings {
+    showBootSequence: boolean;   // default: true
+    aiProvider: 'deepseek' | 'rag-assistant';  // default: 'deepseek'
+  }
+  ```
+- Persists to `localStorage` under key `portfolio-settings`
+- Consumed by: `DOSShell` (boot sequence), `ChatWindow` (AI provider)
+
 ### Kept Unchanged (content only)
 - `About`, `Skills`, `Experience`, `Projects`, `Contact`, `Resume` — render inside `DOSPanel`
-- `ChatWindow` — renders inside `DOSPanel`
+- `ChatWindow` — renders inside `DOSPanel`, reads `aiProvider` from `AppSettingsContext`
 - `BootSequence` — kept, restyled amber (see Section 4)
 
 ### Removed
 - `Terminal.tsx` — replaced by `DOSShell`
-- `SettingsMenu` — removed
-- `context/ThemeContext.tsx` — deleted
+- `SettingsMenu` — replaced by `DOSSettingsDialog`
+- `context/ThemeContext.tsx` — replaced by `AppSettingsContext`
 
 ---
 
@@ -142,14 +162,16 @@ Highlight fg: #1A0800  (dark text on amber selection bar)
 - Status bar F-key hints update per section
 
 ### F-key hints per section
+`F10=Settings` always appears on the right side of the status bar on desktop.
+
 ```
-ABOUT:      F1=About   F9=GitHub   ESC=Chat
-SKILLS:     F2=Skills  F9=GitHub   ESC=Chat
-EXPERIENCE: F3=Exp     F9=GitHub   ESC=Chat
-PROJECTS:   F4=Projects F5=GitHub  F6=Demo   ESC=Chat
-CONTACT:    F5=Contact  F9=GitHub  ESC=Chat
-RESUME:     F6=Resume   F7=Download ESC=Chat
-CHAT:       F7=Chat     F9=GitHub  ESC=About
+ABOUT:      F1=About   F9=GitHub   ESC=Chat    F10=Settings
+SKILLS:     F2=Skills  F9=GitHub   ESC=Chat    F10=Settings
+EXPERIENCE: F3=Exp     F9=GitHub   ESC=Chat    F10=Settings
+PROJECTS:   F4=Projects F5=GitHub  F6=Demo     F10=Settings
+CONTACT:    F5=Contact  F9=GitHub  ESC=Chat    F10=Settings
+RESUME:     F6=Resume   F7=Download ESC=Chat   F10=Settings
+CHAT:       F7=Chat     F9=GitHub  ESC=About   F10=Settings
 ```
 
 ### Blinking Cursor
@@ -162,7 +184,7 @@ CHAT:       F7=Chat     F9=GitHub  ESC=About
 - Slightly faster timing (100ms per line instead of 150ms)
 - Same messages, no changes to content
 - Appears before `DOSShell` mounts, then fades and yields
-- Show/hide logic: shown on first visit per session (`sessionStorage` flag). No settings toggle — if you loaded the page fresh, you see the boot. Refresh = boot again.
+- Show/hide: controlled by `AppSettingsContext.showBootSequence` — user can toggle in settings dialog
 
 ### Scrolling
 - Only the main content panel scrolls
@@ -191,11 +213,13 @@ CHAT:       F7=Chat     F9=GitHub  ESC=About
 - `components/DOS/DOSStatusBar.tsx`
 - `components/DOS/BlockCursor.tsx`
 - `components/DOS/DOSMobileMenu.tsx`
+- `components/DOS/DOSSettingsDialog.tsx`
+- `context/AppSettingsContext.tsx`
 
 ### Modified
 - `app/globals.css` — amber color constants, remove theme variables
-- `app/page.tsx` — remove ThemeContext usage, swap `Terminal` for `DOSShell`, remove settings state
-- `app/layout.tsx` — remove `ThemeProvider` wrapper
+- `app/page.tsx` — swap `Terminal` for `DOSShell`, replace `ThemeProvider` with `AppSettingsProvider`
+- `app/layout.tsx` — replace `ThemeProvider` with `AppSettingsProvider`
 - `components/Terminal/BootSequence.module.css` — restyle to amber
 
 ### Deleted
