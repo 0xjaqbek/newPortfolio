@@ -1,7 +1,7 @@
 {
   "name": "Jakub Skwierawski",
   "title": "Full Stack Developer | Web3, AI & Medical Tech",
-  "bio": "Self-taught full-stack developer building production-grade web applications across medical technology, Web3, e-commerce, and AI. My work spans offline-first PWAs for emergency medical services, AI-powered training simulators, farmer-to-consumer marketplaces, client business tools, and blockchain platforms. I founded Trenuj Ratuj — an AI medical training platform for paramedic students in Poland — and won 3rd place at ETH Warsaw 2025. I build fast and ship to production, leveraging modern stacks (Next.js, React, Supabase, PostgreSQL) and AI tooling (RAG systems, LLMs, vector databases) to create things that actually work in the field.",
+  "bio": "I was vibe coding before it was a thing. Self-taught full-stack developer building production-grade web applications across medical technology, Web3, e-commerce, and AI. My work spans offline-first PWAs for emergency medical services, AI-powered training simulators, farmer-to-consumer marketplaces, client business tools, and blockchain platforms. I founded Trenuj Ratuj — an AI medical training platform for paramedic students in Poland — and won 3rd place at ETH Warsaw 2025. I build fast and ship to production, leveraging modern stacks (Next.js, React, Supabase, PostgreSQL) and AI tooling (RAG systems, LLMs, vector databases) to create things that actually work in the field. My main weapon of choice is Claude Code — I also reach for Codex, Antigravity, and occasionally Lovable.",
   "location": "Kaszuby, Pomorskie voivodeship, Poland",
 
   "contact": {
@@ -24,7 +24,7 @@
     {
       "id": "exp-1",
       "title": "Founder & Lead Developer",
-      "company": "Protokół 999",
+      "company": "Trenuj Ratuj (trenujratuj.pl)",
       "location": "Remote",
       "period": {
         "start": "2025-12",

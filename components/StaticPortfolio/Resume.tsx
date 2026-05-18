@@ -22,11 +22,14 @@ export default function Resume() {
       title: profile.title,
       location: profile.location,
       contact: profile.contact,
-      summary: "Full-stack developer specializing in Web3 and AI solutions. ETH Warsaw 2025 winner (3rd place). Built production platforms serving users across Poland. Expert in Next.js, Solidity, and AI integration.",
+      summary: profile.bio,
       skills: {
-        "web3_blockchain": ["Solidity", "Smart Contracts", "Base", "OnchainKit", "Web3.js"],
-        "full_stack": ["Next.js", "React", "TypeScript", "Node.js", "Tailwind CSS"],
-        "ai_data": ["OpenAI API", "DeepSeek", "MongoDB", "PostgreSQL", "Firebase"]
+        "languages": profile.skills.languages,
+        "frameworks": profile.skills.frameworks,
+        "blockchain": profile.skills.blockchain,
+        "ai_ml": profile.skills['ai-ml'],
+        "databases": profile.skills.databases,
+        "tools": profile.skills.tools,
       },
       experience: profile.experience.map(exp => ({
         title: exp.title,
@@ -42,8 +45,9 @@ export default function Resume() {
       })),
       highlights: [
         "3rd Place - ETH Warsaw 2025 Hackathon (Web3 mentorship platform)",
-        "Founded Protokół 999 - Production medical training platform (protokol999.pl)",
-        "Built multiple Web3 dApps with smart contracts on Base & EVM chains"
+        "Founded Trenuj Ratuj — production AI medical training platform (trenujratuj.pl)",
+        "Built multiple Web3 dApps with smart contracts on Base & EVM chains",
+        "Delivered full-stack client projects: Dr Kolo, Plonbli, TRIAGE MCI, EMS tools suite"
       ],
       education: "Self-taught developer • Intensive project-based learning since elementary school • Active in hackathons & open-source"
     };
@@ -66,10 +70,7 @@ export default function Resume() {
   return (
     <div className={styles.section}>
       <div className={styles.resumeTitleRow}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.prompt}>$</span> cat resume.txt
-        </h2>
-        <button onClick={downloadResumeJSON} className={styles.downloadButton}>
+<button onClick={downloadResumeJSON} className={styles.downloadButton}>
           [ DOWNLOAD JSON ]
         </button>
       </div>
@@ -128,10 +129,7 @@ export default function Resume() {
           <h3 className={styles.resumeSectionTitle}>
             <span className={styles.prompt}>{'>'}</span> SUMMARY
           </h3>
-          <p className={styles.resumeText}>
-            Full-stack developer specializing in Web3 and AI solutions. ETH Warsaw 2025 winner (3rd place).
-            Built production platforms serving users across Poland. Expert in Next.js, Solidity, and AI integration.
-          </p>
+          <p className={styles.resumeText}>{profile.bio}</p>
         </div>
 
         {/* Key Skills - Condensed */}
@@ -141,16 +139,28 @@ export default function Resume() {
           </h3>
           <div className={styles.resumeSkills}>
             <div className={styles.resumeSkillCategory}>
-              <strong className={styles.resumeSkillLabel}>Web3/Blockchain:</strong>
-              <span className={styles.resumeSkillList}>Solidity, Smart Contracts, Base, OnchainKit, Web3.js</span>
+              <strong className={styles.resumeSkillLabel}>Languages:</strong>
+              <span className={styles.resumeSkillList}>{profile.skills.languages.join(', ')}</span>
             </div>
             <div className={styles.resumeSkillCategory}>
-              <strong className={styles.resumeSkillLabel}>Full Stack:</strong>
-              <span className={styles.resumeSkillList}>Next.js, React, TypeScript, Node.js, Tailwind CSS</span>
+              <strong className={styles.resumeSkillLabel}>Frameworks:</strong>
+              <span className={styles.resumeSkillList}>{profile.skills.frameworks.join(', ')}</span>
             </div>
             <div className={styles.resumeSkillCategory}>
               <strong className={styles.resumeSkillLabel}>AI & Data:</strong>
-              <span className={styles.resumeSkillList}>OpenAI API, DeepSeek, MongoDB, PostgreSQL, Firebase</span>
+              <span className={styles.resumeSkillList}>{profile.skills['ai-ml'].join(', ')}</span>
+            </div>
+            <div className={styles.resumeSkillCategory}>
+              <strong className={styles.resumeSkillLabel}>Blockchain:</strong>
+              <span className={styles.resumeSkillList}>{profile.skills.blockchain.join(', ')}</span>
+            </div>
+            <div className={styles.resumeSkillCategory}>
+              <strong className={styles.resumeSkillLabel}>Databases:</strong>
+              <span className={styles.resumeSkillList}>{profile.skills.databases.join(', ')}</span>
+            </div>
+            <div className={styles.resumeSkillCategory}>
+              <strong className={styles.resumeSkillLabel}>Tools:</strong>
+              <span className={styles.resumeSkillList}>{profile.skills.tools.join(', ')}</span>
             </div>
           </div>
         </div>
@@ -207,9 +217,10 @@ export default function Resume() {
             <span className={styles.prompt}>{'>'}</span> HIGHLIGHTS
           </h3>
           <ul className={styles.resumeAchievements}>
-            <li>3rd Place - ETH Warsaw 2025 Hackathon (Web3 mentorship platform)</li>
-            <li>Founded Protokół 999 - Production medical training platform (protokol999.pl)</li>
+            <li>3rd Place — ETH Warsaw 2025 Hackathon (Web3 mentorship platform)</li>
+            <li>Founded Trenuj Ratuj — production AI medical training platform (trenujratuj.pl)</li>
             <li>Built multiple Web3 dApps with smart contracts on Base & EVM chains</li>
+            <li>Delivered full-stack client projects: Dr Kolo, Plonbli, TRIAGE MCI, EMS tools suite</li>
           </ul>
         </div>
 

@@ -20,10 +20,7 @@ export default function Skills() {
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.sectionTitle}>
-        <span className={styles.prompt}>$</span> ls -la skills/
-      </h2>
-      <div className={styles.content}>
+<div className={styles.content}>
         <div className={styles.skillCategory}>
           <h3 className={styles.skillTitle}>
             <span className={styles.bracket}>{'['}</span>Languages

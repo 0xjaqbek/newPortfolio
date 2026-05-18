@@ -20,10 +20,7 @@ export default function Experience() {
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.sectionTitle}>
-        <span className={styles.prompt}>$</span> cat work_history.log
-      </h2>
-      <div className={styles.content}>
+<div className={styles.content}>
         {profile.experience.length === 0 ? (
           <p className={styles.noData}>No work experience data available.</p>
         ) : (

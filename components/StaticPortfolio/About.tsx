@@ -21,10 +21,7 @@ export default function About() {
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.sectionTitle}>
-        <span className={styles.prompt}>$</span> cat about.txt
-      </h2>
-      <div className={styles.content}>
+<div className={styles.content}>
         <div className={styles.header}>
           <h1 className={styles.name}>{profile.name}</h1>
           <p className={styles.title}>{profile.title}</p>

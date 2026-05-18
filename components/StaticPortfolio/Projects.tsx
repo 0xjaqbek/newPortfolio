@@ -122,10 +122,7 @@ export default function Projects() {
   if (error) {
     return (
       <div className={styles.section}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.prompt}>$</span> ls -la projects/
-        </h2>
-        <div className={styles.content}>
+<div className={styles.content}>
           <p className={styles.error}>{error}</p>
         </div>
       </div>
